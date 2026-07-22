@@ -1,0 +1,2270 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<title>粗利計算 | レゾン</title>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="粗利計算">
+<meta name="theme-color" content="#efe8d8">
+<link rel="manifest" href="data:application/manifest+json;base64,eyJuYW1lIjogIueyl+WIqeioiOeulyB8IOODrOOCvuODsyIsICJzaG9ydF9uYW1lIjogIueyl+WIqeioiOeulyIsICJkZXNjcmlwdGlvbiI6ICLpmLLniq/jgqvjg6Hjg6nllrbmpa3jga7nspfliKnoqIjnrpfjgqLjg5fjg6oiLCAic3RhcnRfdXJsIjogIi4vaW5kZXguaHRtbCIsICJzY29wZSI6ICIuLyIsICJkaXNwbGF5IjogInN0YW5kYWxvbmUiLCAib3JpZW50YXRpb24iOiAicG9ydHJhaXQiLCAiYmFja2dyb3VuZF9jb2xvciI6ICIjMGYxNDE5IiwgInRoZW1lX2NvbG9yIjogIiMwZjE0MTkiLCAibGFuZyI6ICJqYSIsICJpY29ucyI6IFt7InNyYyI6ICJkYXRhOmltYWdlL3BuZztiYXNlNjQsaVZCT1J3MEtHZ29BQUFBTlNVaEVVZ0FBQU1BQUFBREFDQUlBQUFEZHZ2dFFBQUFHOUVsRVFWUjRuTzNjWFd4YjlSbkg4Y2QyN0tSNWJScVMxRzNlY0dpaFhTbVF3cUMwMGNaMnNhMGdNUUVTaFExRUIxUkNZeS9xZ0pXcmNWZkd1bDdBdEY2QU5xU2hidE42c1FrdXVCaUNVVklCaFVJTFZabEduSVNRSnZRdGtEWnBrdHJPTGlKVjIwU2dmWDVlN0hQOC9keTE4ZVB6ZC9MVmNlei9pU01iMG84WjRCVXQ5QUlRYkFRRUNRRkJRa0NRRUJBa0JBUUpBVUZDUUpBUUVDUUVCQWtCUVVKQWtCQVFKQVFFQ1FGQlFrQ1FFQkFrQkFRSkFVRkNRSkFRRUNRRUJBa0JRVUpBa0JBUUpBUUVDUUZCUWtDUUVCQWtCQVFKQVVGQ1FKQVFFQ1FFQkFrQlFVSkFrQkFRSkFRRUNRRkJRa0NRRUJBa0JBUUpBVUZDUUpBUUVDUUVCQWtCUVVKQWtCQVFKQVFFQ1FGQlFrQ1FFQkFrQkFRSkFVRkNRSkNVRlhvQlRzTzdENldmZU0wM0c2dU1kLzNsOWtSalZYNlhsRGsxdGYrMlA1OGRQZU1iYjluVTFmN0FOZmxkMGp3STZoa29lY3ZLNnBXTnZ0bnN4Tm4wOXA3OHJzZk1Cbjd6aHJ1ZWlpVTFyVCs0S3Ivcm1SOUJEY2lpa2M2dDNSYU4rS1pQdk53MzJ2TlJIcGR6NnYxUFJ2NTYyRDJlZW5oOXREeVF6d2FCRGNpcytyTEc1RzFmY1kvM1B2RmFiaktUbDVYTVpITzkyL2JZakhPODRSdXArblZ0ZVZuSi9BdHdRR2JXL3NBMWlZWkszK3pVOEtuQlo5N095ektPL09uOThYK2Q4TTNHS3VPcExkZm5aUmtGRWV5QVlsV0pqcCt1ZFk4UDdUbzRrUjRWMXpCOWRIenc2YmZjNDIyYnIwNDA1Zm5YK2ZrVTdJRE1yUEZibHl6ODZsTGY3RXdtMS92NHErNm5ubG5wN1QzWmliTysyYXBsRGNtTmwwdUhMN1RBQjJSbXFVZTZvNG1ZYjNiczNaRlBudi9BZmVqUm5vOU92TkxuSEk1WTU2UGRFZS9yZ0NJUmhvQVd0TlV0dmVzSzkzai9VMitjL1hUU01aaWJ6UFI2MzRzeXM4WGZYVkd6cXRrOVhpVENFSkNadFd6cXFtaXA5YzFtUHB2c2YvSjF4K0RnTTI5UERaL3lIVFJlWDlIK3cydDlzMFVsSkFGRkU3SFV3K3ZkNDBkZitPZllPOE1YTkRMUk56cTA2NkQ3aUIwL1dWdFdXKzRlTHg0aENjak02dGUyTm53ejVSNy9jTnVlbVV6dS9HL2YrL2lGM2Y0LzFYVWxtellzOTgwV20vQUVaR2FwTGRmSEt1TysyVFA5bzBOL09IQ2VOejc2L0FXZnNjNkpsRVU3dDNiN1pvdFFxQUpLTkZhMWJiN2FQVDc0dS8yVFEyTmZlclBNWjVQOVQzbCtaNXExOVB0WExPaW9kNDhYbTFBRlpHYkpqWmRYTFd2d3plYW1NdWxmZmZtckt2ZXJOak1yVDlhMDN0dmxteTFPWVFzb0VvMTBQdHB0M3ZkV1J2Y09IbjhwL1FVM0dEc2d2Vy9VK1VoUU4wM25FcmFBekt4bVZYUHp6U3ZjNDMwNzltYkhwei8zU3pQWlhPOHZoVTNUcjE4YzNFM1R1WVF3SURQcmVQRGFlSDJGYjNiNjJQakF6bjJmKzZVanV3NU9mSGpTZDdleHluanFvWFcrMldJV3pvREthc3M3Zm5TZGUzeGs5NkhUSHh6N24vK2NHam10N042MzNoL3NUZE81aERNZ00ydTY2ZExhSzVPKzJabmNUTysyUFpiN3IrZXE5UGFlN0JubjlVTlZselFzMmJqS04xdmtRaHVRbVhWdTdZNlVPUi9nNmNQSGhuY2ZPdmZQay8vb1AvbHF2M01kRWV2YzJoMkpoZk5iSGM1SE5hc3lWYi9ranRYdThZR2QrNmFQVDVoWjlrd20vV3YvTmRUTk42K29XUjM0VGRPNWhEa2dNMnU3ZjAzNTRtcmZiSFo4dW0vSFhqTWJmUHF0cVpIVHZqdUpMNnpvZURBTW02WnpDWGxBMFlxeTFNLzhyMzJPLzcxMzZMa0RSLzc0bnZzZU9uNThYVGcyVGVjUzhvRE1iTkhYT2haMXQ3dkgrNTk4ZlNicjNEU3R2U3JaZE5PbDdrTUhRdmdETXJQVVErdWlGZlA5L20ra0xOcjU4L0JzbXM2bEpBSXFUOWEwM3J0bW5nKzY5SHVySzFQaDJUU2RTMGtFWkxNL3pvdm43OGRaa0dRTElySWgvVmloMStBM3NIUGZ4Ny9mWCtoVnFKcHVYTDdzRnpjVWVoVk9wWElHd3Y4SkFVRkNRSkFRRUNRRUJBa0JRVUpBa0JBUUpBUUVTYkRmaVJaOS9PdzdBNzk5VTcrZmxydXZiQS8xUlQ5Zm9LVFBRRXZ1WEYzZTdMemM3Sno0d29xV2V3TDVBYXQ1VWRJQlJST3hOdm1qbVZ2dld4T3JUdVJsUFVGVTBnR1pXZE4zbGxkZmRwRjdmRUZiM2VKYlYrWnhQWUZUNmdGWnhGcUU2eTVhTm5XRjljOHR6bE5KUC9oWjhUcm4zN0NhV1ZsZG1LOTNQaDhFQkFrQlFSTHNqeG9wK0JXSmg3ZThxTjhKVnlTaWRCRVFKQVFFQ1FGQlFrQ1FFQkFrQkFRSkFVRkNRSkNVOUJXSnM4YmVIWGx2ODk5OHN5dDJmSHZSZXYrSEQ0VUFaeUJJQ0FnU0FvS0VnQ0FoSUVnSUNCSUNnb1NBSUNFZ1NBZ0lFZ0tDaElBZ0lTQklDQWdTQW9LRWdDQWhJRWdJQ0JJQ2dvU0FJT0dpZWtnNEEwRkNRSkFRRUNRRUJBa0JRVUpBa0JBUUpBUUVDUUZCUWtDUUVCQWtCQVFKQVVGQ1FKQVFFQ1FFQkFrQlFVSkFrQkFRSkFRRUNRRkJRa0NRRUJBa0JBUUpBVUZDUUpBUUVDUUVCQWtCUVVKQWtCQVFKQVFFQ1FGQlFrQ1FFQkFrQkFRSkFVRkNRSkFRRUNRRUJBa0JRVUpBa0JBUUpBUUVDUUZCUWtDUUVCQWtCQVFKQVVGQ1FKQVFFQ1FFQkFrQlFVSkFrQkFRSkFRRUNRRkI4bThwWVZzdXBROW9ld0FBQUFCSlJVNUVya0pnZ2c9PSIsICJzaXplcyI6ICIxOTJ4MTkyIiwgInR5cGUiOiAiaW1hZ2UvcG5nIiwgInB1cnBvc2UiOiAiYW55In0sIHsic3JjIjogImRhdGE6aW1hZ2UvcG5nO2Jhc2U2NCxpVkJPUncwS0dnb0FBQUFOU1VoRVVnQUFBZ0FBQUFJQUNBSUFBQUI3R2tPdEFBQVRlMGxFUVZSNG5PM2RlNUNkZFgzSDhYUDJmazAyMldTVFRiTEpYbUtJUURRRVFrSkNvbE9rVnJ4TXNWYXRSYTFhcE1LSWdpQ0pmekh0REZGUVd4MHRhdXYwcm5pcDdZelc2ZFFXSlFSRktLSVNORWgyYzROczdoQ3ltOHNtdTlzL3lvelZ4ank3eVo3OVBTZmYxK3RmbU94bkptZlBPK2VjMy9PYzRqVjlkeFlBaUtjaTlRQUEwaEFBZ0tBRUFDQW9BUUFJU2dBQWdoSUFnS0FFQUNBb0FRQUlTZ0FBZ2hJQWdLQUVBQ0FvQVFBSVNnQUFnaElBZ0tBRUFDQW9BUUFJU2dBQWdoSUFnS0FFQUNBb0FRQUlTZ0FBZ2hJQWdLQUVBQ0FvQVFBSVNnQUFnaElBZ0tBRUFDQW9BUUFJU2dBQWdoSUFnS0FFQUNBb0FRQUlTZ0FBZ2hJQWdLQUVBQ0FvQVFBSVNnQUFnaElBZ0tBRUFDQW9BUUFJU2dBQWdoSUFnS0FFQUNBb0FRQUlTZ0FBZ2hJQWdLQUVBQ0FvQVFBSVNnQUFnaElBZ0tBRUFDQW9BUUFJU2dBQWdoSUFnS0FFQUNBb0FRQUlTZ0FBZ2hJQWdLQUVBQ0FvQVFBSVNnQUFnaElBZ0tBRUFDQW9BUUFJU2dBQWdoSUFnS0FFQUNBb0FRQUlTZ0FBZ2hJQWdLQUVBQ0FvQVFBSVNnQUFnaElBZ0tBRUFDQW9BUUFJU2dBQWdoSUFnS0FFQUNBb0FRQUlTZ0FBZ2hJQWdLQUVBQ0FvQVFBSVNnQUFnaElBZ0tBRUFDQW9BUUFJU2dBQWdoSUFnS0FFQUNBb0FRQUlTZ0FBZ2hJQWdLQUVBQ0FvQVFBSVNnQUFnaElBZ0tBRUFDQW9BUUFJU2dBQWdoSUFnS0FFQUNBb0FRQUlTZ0FBZ2hJQWdLQUVBQ0FvQVFBSVNnQUFnaElBZ0tBRUFDQW9BUUFJU2dBQWdoSUFnS0FFQUNBb0FRQUlTZ0FBZ2hJQWdLQUVBQ0FvQVFBSVNnQUFnaElBZ0tBRUFDQW9BUUFJU2dBQWdoSUFnS0FFQUNBb0FRQUlTZ0FBZ2hJQWdLQUVBQ0FvQVFBSVNnQUFnaElBZ0tBRUFDQW9BUUFJU2dBQWdoSUFnS0FFQUNBb0FRQUlTZ0FBZ2hJQWdLQUVBQ0FvQVFBSVNnQUFnaElBZ0tBRUFDQW9BUUFJU2dBQWdoSUFnS0FFQUNBb0FRQUlxaXIxQUVydThHTzdONy92bTZsWFpGand2dVh6M3JVczlZckpjT3JJMEk5Ky83NlRoNDZsSG5JbXRlM05sOXozNXNwNnp3L25PYThBem45VEw1M1RkczJpMUNzeTdQcmlqNDd2T3B4NnhXVFk4ZGtmNXZ6WnYxQW9kTisrMnJOL0JBSVFRdWNIcnFpYVVwdDZ4Wm1NREEzM2Z2VEIxQ3RLN3NnVGUvZjh5ODlTcjhqUStsdmQwNjlja0hvRmswRUFRcWllVnRmNS9wV3BWMlI0L3RGbjkzMzdGNmxYbE5EbzhNaldEUnNMbzZsM25GRmxRM1gzaDFhbFhzRWtFWUFvWnIxaDhaU2xzMU92eUxEOVV6ODQ5Y0tKMUN0SzVkbC8vT25ScllkU3I4aXc0TWJMYTJZMnBsN0JKQkdBTUlxRm5uVnJpMVc1L2hzLytkeng3WjkrT1BXS2tqalJmMlRYRng5THZTSkQwMHRudHIvcG90UXJtRHk1ZmpwZ1lqVjBUNXY3aHk5THZTTEQzbTl1ZWVIeC90UXJKbDd2eHg0Y09YNHE5WW96S1ZZVWU5YXZMVlFVVXc5aDhnaEFMQjEvZkduZG5PYlVLODVvdExCMXc4YlJreU9wZDB5a0E5L3BmZTc3dTFLdnlORCtsb3ViRnM5SXZZSkpKUUN4Vk5SV2RYOTRUZW9WR1k1dGYvNlp2MzA4OVlvSk16d3d0TzNQdjU5NlJZYWF0c2I1Tnl4UHZZTEpKZ0RoVEZ2Vk1lT3E3dFFyTWp6emQ0OGYyM21lWEJhdy9UTS9IRHB3TlBXS0ROMjNYMW5aVUoxNkJaTk5BQ0xxK3REcXlzYWExQ3ZPWkdSb3VIZkR4dFFySnNDUnpYdjMvT3ZQVTYvSU1IMXRaK3NyT2xPdklBRUJpS2htUnNPQzkrWDk5ZjdoeDNidis5WlRxVmVjazlIaGtkNjdIaXlNNVBya2YyVkRkZmZ0cTFPdklBMEJDS3I5VFJjMVhUZ3o5WW9NMno3MThNbm5qNmRlY2ZaMmYrbW5nMXNQcGw2UllmNTdMNnVkMVpSNkJXa0lRRlFWeFlYcjF4YnpmZWJ2MU9IajIvL2lCNmxYbktVVC9VZDIvbFhlRC80M1hqQ2ovYTFMVXE4Z0dRR0lxL0dDR2UxdnVUajFpZ3o3dnYyTHc0L3RUcjNpYlBUZXZTbm5CLy9MNGg4QmxKUUFoRGIvaHVVMWJYbS83cjkzdzhhUm9lSFVLOGJud0gvMlB2ZlF6dFFyTXBURjI0Q1VsQUNFVnRsUTNYMWIzajhBUExiejhETi84NlBVSzhaaGVIQm8yeWR6Zi9CL1ptUCtEd0pRYWdJUVhlc3J1NmF2eWZ1OWY1LzUreDhmMi81ODZoVmp0ZU96ajVUQndmOWJWK1g4S0RDVFFBQW9kTjkrWmM2Ly9XUDBaQm5jU1BsL0hkbThyLzhiZWIvai83VFY4MXR6ZnpFZ2swQUFLTlRPYnVxNC9yTFVLeks4OEhqLzNtOXVTYjBpdytqd1NPK0dqVGsvK0Y5UlY5WHo0U3RUcnlBWEJJQkNvVkNZOHdkTEdoZTJwbDZSWWZ1bkh6NzVYSzR2QzlqOXBTY0duODc5d2Yvckw2dHR6L2NOQVprc0FrQ2hVQ2dVS3l0NlByS21rTzhEZ2FkZU9KSG51NnFkNkQreTY2Ly9PL1dLREkwTFcrZTh6Y0YvWGlRQXZLajU0bG16cjcwdzlZb00rLy85NmVjZmVUYjFpdFBydlh2VDhMRjhIL3d2Rm5vK3NxWlk2YmVlRjNrbzhFc0xibHBSUGIwKzlZb012Ujk3TUllWEJSejhyNzc4SC95ZmZlMkZ6UmZQU3IyQ0hCRUFmcW1xdWFicmxyeC9JZmp4WFlmejl0Mkt3NE5EZmZrLytOL2FzT0NtRmFsWGtDOEN3SytZK2VxRkxTdm1wVjZSNGRsLytNblJ2dWRTci9pbEhYLzV5TkQrd2RRck1uVGRja1ZWczRQLy9Bb0I0TmYxM0xHbW9xWXk5WW96R1QwMTBwdWJ5d0lHZnJhLy81L3pmdkMvWldYSGpOOWVtSG9GdVNNQS9McTZlVlBtdlh0WjZoVVpYdmpKbmp4ODBjcm95T2pXdXg3SSs4SC8ycXFlT3h6ODV6UUVnTk9ZOS9hbDlaMHRxVmRrMlBHWmgwOGVPcFoydys0dlB6SDRpN3dmL085NHo3SzZ1Vk5TcnlDUEJJRFRLRlpYOUt4Ym0zcEZobE5IRW4vMGVtTFB3SzR2UEpwd3dGZzBkRStiZTkzTFU2OGdwd1NBMDV1NnJMM3RkUmVrWHBIaHdIOXNmZjdoWGFsK2V0ODk1WER3ZjkzYVlwVmZjMDdQSTRQZnFQUG1sVlZUNjFLdnlORDdzVTBqSnhJOEN4Kzh2Ky9RZ3pzbS8rZU95NnczTEo2eWRIYnFGZVNYQVBBYlZiZlVkZDI4TXZXS0RNZWZmV0hYcEgvejR2RFJrMzJmeVB2Qi8rcHBkWjI1LytzakxRSGdUTnBlZDhHVVM5cFRyOGp3N0QvOTlPaldRNVA1RTh2ajRQOEhWMVUxMTZaZVFhNEpBR2RVTEN4Y3Y2WlluZXZIeWVqd3lOYTdKdSt5Z0lHZjcrLy8rcE9UOU1QT1Zzdnl1VE5mODVMVUs4aTdYUDlpa3dmMW5kUG1YcmMwOVlvTVJ6YnYzVE1wWDhNeU9qSzY5YTdjMy9HL3BySjczWnJVS3lnREFrQzJzamhJdnYyelA1eUVMMkxzdisrSndhY09sUHFubktONTcxcFczekUxOVFyS2dBQ1FyYUttTXYrWGtnNFBERzM3eEVNbC9SRW45ZzdzL0VMZTcvaGYzOWt5N3gxTFU2K2dQQWdBWTlLeXNtUEcxVDJwVjJRNFVPSjdNdmZkODlEdzBaT2wrL01uUk0rNnRUbi96SWI4OEVCaHJMcHVYVlhabFBmYlNmYmV2V25rZUVrdUN6ajR2VzJITm00dnhaODhnZHBlZjhIVVpYay90VVYrQ0FCalZkUGFzT0RHeTFPdnlIQ2kvMGdwM3FVWlBucXk3K09sZlgvcDNKWEZkUnZraWdBd0R1MXZ2TERwb3JiVUt6THMvdkxFZnpQN2puc2ZHZHFYOTRQL25SKzRJdjlYYnBNckFzQjRWQlFYcmw5YnJNajFsOGUvZUZuQXhKM1VITml5ZjgvWDhuN3dmK3FsYzlwZXV5ajFDc3FNQURBK2pZdGEyOSs2SlBXS0RBTlA3cHVvYTdWR1IwWjc3OW80bXUrRC84WHFpaDRIL3hrL0FXRGM1dCt3dkhaV1Urb1ZHWGJjKytpRTNLMmgveXViQjdiay91RC9PeStwWDlDU2VnWGxSd0FZdDhyNnF1N2JWcWRla1dGNGNPamNQN1lkMmplNDgvTjV2K04vZmNmVWVYOTBTZW9WbENVQjRHeE1mMFhuOUZkMHBsNlI0ZUIzdDUzakhadDc3OW1VLzRQLzNldnkvaDNPNUpZQWNKYTZiMXRkMlZDZGVrV0djL25PbGtNUGJELzB3UFlKblRQeDJxNVoxTEo4YnVvVmxDc0I0Q3pWem1xYS85N0xVcS9JY0dMUHdObTloMU1XQi8rcnB0UjJmdUNLMUNzb1l3TEEyV3QvNjVMR1JhMnBWMlRvdisrSnMvZ1VkK2ZuSHoyeGQ2QVVleVpRNTgwcnE2YzUrTS9aRXdET1hyR2l1SEQ5MmtMT0x3c1kvem5PZ1MwSCtyK3l1WFNUSnNTVXBiTm52WDV4NmhXVU53SGduRFJkMU5iK3hndFRyOGd3c0dWLy8xZkgvSVErTXRxN0lmY0gvNnNxZXRhdkxlUzZ2SlFCQWVCY0xiang4cG9aRGFsWFpOajV1VWZIZUMrSDNWL2RQUER6L2FYZWM0N212djNsRFYzVFVxK2c3QWtBNTZxeXFhYnJsbFdwVjJRWVBucXk5NTVObWYvYjBQN0JuWi9MKzhIL3VybFRPdDY5TFBVS3pnY0N3QVNZY1hWUHk4cU8xQ3N5SEhwZys4R3NZNTE5ZDVmQndmK2VkV3NxYXF0U3IrQjhJQUJNako0N3Jzei9zMUxmR1Mvc092VGdqc3hDSkRmejFRdGJWc3hMdllMemhBQXdNY3JpZlltaGZZTTc3bjNrdFA5cCtOaXB2akc4UjVSV1ZYTVp2TnRHR1JFQUpreFpmRExaLzdVblQvc1o3ODdQUDNwaVQ5NFAvaSs0YVVYMTlQclVLemgvQ0FBVHBsaFYwYk4rVGQ3UEpvNk1idjEvbHdVTVBuV2cvNzRuVWkwYW8rWWxzMlpmbS9jVHQ1UVhBV0FpVFZuYW52K3JrMzc5Nlg1a2RHditELzVYVml4MDhKK0pKZ0JNc003M3I2aHV5ZnY5Q2Y3dkd6NzlYMzl5NEdkNVAvZy81MjB2YTFnNFBmVUt6amNDd0FTcm1scVgvenVVRFI4NzFYZjNwa0toTUxSL2NNZTllVC80WDl2ZVBQLzZTMU92NER3a0FFeTh0dGN1bW5ycG5OUXJNaHphdE9QZy9YMTlIMzlvZUhBbzlaWU1QUisrc3FJdTcwZHNLVWNDUUVuMDNMR21XSjMzUjlmVGYvYkF3ZTl1UzcwaXc0eXJ1cWV0bnA5NkJlZW52UCtLVXFicU8xdm12V05wNmhVWjh2OXYvOHJHbXE1YkhmeW5WQVNBVXBuM3JtVjFIVk5UcnlodkMyNjh2R1ptWStvVm5MY0VnRktwcUtuc3VXTk42aFZsck9taXR2YmZjL0NmRWhJQVNxamw4cmt6WDcwdzlZcXlWQlpmdGtPNUV3QktxK3VXVlZYTk5hbFhsSit5K0xwTnlwMEFVRnJWMCtzWDNMUWk5WW95VXp1N2FmNE55MU92NFB3bkFKVGM3R3N2YkY0eUsvV0tjdEo5MityS2VnZi9LVGtCb1BTS2haNzFhNHFWSG14ajB2cktydWxyTzFPdklBUy9rMHlHeG9XdGM5NjJKUFdLTWxEWlVOMTkyK3JVSzRoQ0FKZ2s4NisvckxhOU9mV0t2SnYvSjh0cjJoejhaNUlVcittN00vVUdKdHVXZGQ4NWVIOWY2aFhreU9JTlY3ZGUxWjE2QlpQTkt3Q0FvQVFBSUNnQkFBaEtBQUNDRWdDQW9BUUFJQ2dCQUFoS0FBQ0NFZ0NBb0FRQUlDZ0JBQWhLQUFDQ0VnQ0FvQVFBSUNnQkFBaEtBQUNDRWdDQW9BUUFJQ2dCQUFoS0FBQ0NFZ0NBb0FRQUlDZ0JBQWhLQUFDQ0VnQ0FvS3BTRHlDQnhSKzlPdldFTVJnWi9mRTd2ekg0MUlIVU84N0pCWGU5YXNhcmVsS3ZnTlB6Q29DOHFpaDIzYklxOVloejB2eXlXWjc5eVRNQklMK21MbXR2ZldWWDZoVm5xMWpvTHZPQWNkNFRBSEt0OCthVnhlcXlmSlRPL0oyWE5GM1Vsbm9GbkVsWi9tb1JSOTI4S1hQZWZISHFGZU5XVVZmVmVkT0sxQ3NnZ3dDUWR4M3Z1YlM2cFM3MWl2R1plOTNMYTlvYVU2K0FEQUpBM2xVMjFYUmNmMW5xRmVOUU03Tng3dHVYcGw0QjJRU0FNakQ3alMrdDc1eVdlc1ZZTGJqcDhzcDZCNndwQXdKQUdTaFdWblI5OElyVUs4YWthZkhNdHRjc1NyMEN4a1FBS0EvVFZuVzByT3hJdlNKYjE2MVhGSXFwUjhEWUNBQmxvK3VEVnhRcmN2M2sybnBWOTVTbDdhbFh3RmdKQUdXam9YdmFyTjk5YWVvVnYxR3h1cUx6L1N0VHI0QnhFQURLU2ZQRitiMjBxcnFsdm01T2Mrb1ZNQTRDQUJDVUFBQUVKUUFBUVFrQVFGQUNBQkNVQUFBRUpRQUFRUWtBUUZERmEvcnVUTDJCeWJabDNYY08zdCtYZWdVNXNuakQxYTFYZGFkZXdXVHpDZ0FnS0FFQUNFb0FBSUlTQUlDZ0JBQWdLQUVBQ0VvQUFJSVNBSUNnQkFBZ0tBRUFDRW9BQUlJU0FJQ2dCQUFnS0FFQUNFb0FBSUlTQUlDZ0JBQWdLQUVBQ0VvQUFJSVNBSUNnQkFBZ0tBRUFDRW9BQUlJU0FJQ2dCQUFnS0FFQUNLb3E5UUFTV1B6UnExTlBPRXY3dnZYVTAzLzZ2ZFFyVHE5bVp1UHlmN3N1OVFvWUI2OEFBSUlTQUlDZ0JBQWdLQUVBQ0VvQUFJSVNBSUNnQkFBZ0tBRUFDRW9BQUlJU0FJQ2dCQUFnS0FFQUNFb0FBSUlTQUlDZ0JBQWdLQUVBQ0VvQUFJSVNBSUNnQkFBZ0tBRUFDRW9BQUlJU0FJQ2dCQUFnS0FFQUNFb0FBSUlTQUlDZ0JBQWdLQUVBQ0VvQUFJSVNBSUNnQkFBZ0tBRUFDRW9BQUlJU0FJQ2dCQUFnS0FFQUNFb0FBSUlTQUlDZ0JBQWdLQUVBQ0VvQUFJSVNBSUNnQkFBZ0tBRUFDRW9BQUlJU0FJQ2dCQUFnS0FFQUNFb0FBSUlTQUlDZ0JBQWdLQUVBQ0VvQUFJSVNBSUNnQkFBZ0tBRUFDS3A0VGQrZHFUY0FrSUJYQUFCQkNRQkFVQUlBRUpRQUFBUWxBQUJCQ1FCQVVBSUFFSlFBQUFRbEFBQkJDUUJBVUFJQUVKUUFBQVFsQUFCQkNRQkFVQUlBRUpRQUFBUWxBQUJCQ1FCQVVBSUFFSlFBQUFRbEFBQkJDUUJBVUFJQUVKUUFBQVFsQUFCQkNRQkFVQUlBRUpRQUFBUWxBQUJCQ1FCQVVBSUFFSlFBQUFRbEFBQkJDUUJBVUFJQUVKUUFBQVFsQUFCQkNRQkFVQUlBRUpRQUFBUWxBQUJCQ1FCQVVBSUFFSlFBQUFRbEFBQkJDUUJBVUFJQUVKUUFBQVFsQUFCQkNRQkFVQUlBRUpRQUFBUWxBQUJCQ1FCQVVBSUFFSlFBQUFRbEFBQkJDUUJBVUFJQUVKUUFBQVFsQUFCQkNRQkFVQUlBRUpRQUFBUWxBQUJCQ1FCQVVBSUFFSlFBQUFRbEFBQkJDUUJBVUFJQUVKUUFBQVFsQUFCQkNRQkFVQUlBRUpRQUFBUWxBQUJCQ1FCQVVBSUFFSlFBQUFRbEFBQkJDUUJBVUFJQUVKUUFBQVFsQUFCQkNRQkFVQUlBRUpRQUFBUWxBQUJCQ1FCQVVBSUFFSlFBQUFRbEFBQkJDUUJBVUFJQUVKUUFBQVFsQUFCQkNRQkFVQUlBRUpRQUFBUWxBQUJCQ1FCQVVBSUFFSlFBQUFRbEFBQkJDUUJBVUFJQUVKUUFBQVFsQUFCQkNRQkFVQUlBRUpRQUFBUWxBQUJCQ1FCQVVBSUFFSlFBQUFRbEFBQkJDUUJBVUFJQUVKUUFBQVFsQUFCQkNRQkFVQUlBRUpRQUFBUWxBQUJCQ1FCQVVBSUFFSlFBQUFRbEFBQkJDUUJBVUFJQUVKUUFBQVFsQUFCQkNRQkFVQUlBRUpRQUFBUWxBQUJCQ1FCQVVBSUFFSlFBQUFRbEFBQkJDUUJBVUFJQUVKUUFBQVFsQUFCQkNRQkFVQUlBRUpRQUFBUWxBQUJCQ1FCQVVBSUFFSlFBQUFRbEFBQkIvUStxZ21XQUIzRG9Ud0FBQUFCSlJVNUVya0pnZ2c9PSIsICJzaXplcyI6ICI1MTJ4NTEyIiwgInR5cGUiOiAiaW1hZ2UvcG5nIiwgInB1cnBvc2UiOiAiYW55In0sIHsic3JjIjogImRhdGE6aW1hZ2UvcG5nO2Jhc2U2NCxpVkJPUncwS0dnb0FBQUFOU1VoRVVnQUFBZ0FBQUFJQUNBSUFBQUI3R2tPdEFBQVFoVWxFUVZSNG5PM2RhNURkZFgzSDhiUDNzTm1FaE54dlpEY0xJU0NYY0EwQ29hMU90UVBqYU5GYVFCazZXa1laQkFzNlhKNHgwNDRncFpTT2RkQlNPN1ZsUUZzSGE1M1I2YlFPVTBKQUN1R3VvR1kzSkNFSklZRkE3dG5zcFE5b1J3RUoyYzA1NTVlem45ZnJLWnZ6L1UxbU9lK2NjLzduLzIyNm9QL21DZ0I1bWtzZkFJQXlCQUFnbEFBQWhCSUFnRkFDQUJCS0FBQkNDUUJBS0FFQUNDVUFBS0VFQUNDVUFBQ0VFZ0NBVUFJQUVFb0FBRUlKQUVBb0FRQUlKUUFBb1FRQUlKUUFBSVFTQUlCUUFnQVFTZ0FBUWdrQVFDZ0JBQWdsQUFDaEJBQWdsQUFBaEJJQWdGQUNBQkJLQUFCQ0NRQkFLQUVBQ0NVQUFLRUVBQ0NVQUFDRUVnQ0FVQUlBRUVvQUFFSUpBRUFvQVFBSUpRQUFvUVFBSUpRQUFJUVNBSUJRQWdBUVNnQUFRZ2tBUUNnQkFBZ2xBQUNoQkFBZ2xBQUFoQklBZ0ZBQ0FCQktBQUJDQ1FCQUtBRUFDQ1VBQUtFRUFDQ1VBQUNFRWdDQVVBSUFFRW9BQUVJSkFFQW9BUUFJSlFBQW9RUUFJSlFBQUlRU0FJQlFBZ0FRU2dBQVFna0FRQ2dCQUFnbEFBQ2hCQUFnbEFBQWhCSUFnRkFDQUJCS0FBQkNDUUJBS0FFQUNDVUFBS0VFQUNDVUFBQ0VFZ0NBVUFJQUVFb0FBRUlKQUVBb0FRQUlKUUFBb1FRQUlKUUFBSVFTQUlCUUFnQVFTZ0FBUWdrQVFDZ0JBQWdsQUFDaEJBQWdsQUFBaEJJQWdGQUNBQkJLQUFCQ0NRQkFLQUVBQ0NVQUFLRUVBQ0NVQUFDRUVnQ0FVQUlBRUVvQUFFSUpBRUFvQVFBSUpRQUFvUVFBSUpRQUFJUVNBSUJRQWdBUVNnQUFRZ2tBUUNnQkFBZ2xBQUNoQkFBZ2xBQUFoQklBZ0ZBQ0FCQktBQUJDQ1FCQUtBRUFDQ1VBQUtFRUFDQ1VBQUNFRWdDQVVBSUFFRW9BQUVJSkFFQW9BUUFJSlFBQW9RUUFJSlFBQUlRU0FJQlFBZ0FRU2dBQVFna0FRQ2dCQUFnbEFBQ2hCQUFnbEFBQWhCSUFnRkFDQUJCS0FBQkNDUUJBS0FFQUNDVUFBS0VFQUNDVUFBQ0VFZ0NBVUFJQUVFb0FBRUlKQUVBb0FRQUlKUUFBb1FRQUlKUUFBSVFTQUlCUUFnQVFTZ0FBUWdrQVFDZ0JBQWdsQUFDaEJBQWdsQUFBaEJJQWdGQUNBQkJLQUFCQ0NRQkFLQUVBQ05WYStnQTBnSDJiZHo3NXllOE83UmtzTXIxcnlZeVQvL0VQbTVxYmlrd2ZtKzFQdmZ6czUzNVFHU2t6ZmZMUzJTZDk4Nk9WUnZvTG93eXZBSGh2SGJPNkZseHhScW5wTzEvWTh2Sy8vcXpVOURFWUdSenV1L1hCVXMvK1RhM052VGVlNzltZmd5RUFISlM1bDV3MDhaaHBwYWF2dmV0L0JyYnNLalY5dERiYzgvVHUvbTJscHMvNzFNbWRpNmFXbWs1akVRQU9TbE5MYys5Tnkwdjl1M0pvOS83KzIxZVdtVDFLZXpmdVdQK3RKMHBONzVnemFjRm5UeTgxbllZakFCeXNTU2ZObXZYUjQwdE5mL1dCTmE4OXRMYlU5SVBYZjl1SzRYMWxQaXlwVkNxOTE1L1hQTUVIZXh3c0FXQVV1cTllMWpaMVFxbnAvWCs1c3RRSDBRZHA2MC82dHoyOHZ0VDBhUjlZTlBYY28wdE5weEVKQUtQUU9xbWorNHZ2THpWOTM2WWQ2Kzkrdk5UMDl6UzBhMkROSFErWG10N1MyYmJvUytlVW1rNkRFZ0JHWitZRmk0ODhmVzZwNlJ2dmUzYlg2bGRMVFQrd3RYYzlWdkNUNnFNL2YyYjdqSW1scHRPZ0JJQlI2NzFoZVZOYm1kK2NrYUhodnErc3FBd1h1c1R5M2UxOGZzdW03eFc3VnJWcnlmUTVuenl4MUhRYWx3QXdha2QwVDVuMzZhV2xwdTk0YnZQTDMzKysxUFRmYW1SNHBPK1dCNHRscWJtcDk2YnpHK3VMY2h3bUJJQ3hXUERaMHliTW4xeHErb3RmZjNUZzFkMmxwci9UcG45NWJ1Y0xXMHRObi9PSjkzVWRQNlBVZEJxYUFEQVd6ZTB0dmRlZlYycjYwTTZTSDdlK3pjQ1dYZXUrOFZpcDZlM1RPeGRlZVdhcDZUUTZBV0NNcHB5OVlQb0hGNVdhdnZVLysxNy9hYkVMTG45VC8rMHJoM2J2THpXOTU5cHpXaWEybDVwT294TUF4cTdudXBMUFBuMWZmYWpnVjY3ZXRHM2x1bGNmV0ZOcStwU3pGMHovL2Q1UzB4a0hCSUN4YTU4eGNlSG5pNzMvc0hmRDlvSTNYYWhVS3NON0IvdHVlNmpVOUxMdndqRStDQUNIWlBZZnZhOXJTYkZQSURmYzgvVHVOY1Z1dTdidTdsWDdOdTBvTmIzczUvQ01Ed0xBSVdscWJ1cTlhWG1sMERXSUk0UERmYmVVdWZIeTdyN1hOdDc3VElIQmxVcWw5Slc0akJzQ3dLSHFPbjdHbkkrZlVHcjY5cWRlM3Z6dkw5Ujc2a2hsOVMwUGpnd04xM3Z1Lyt1OThmeFMzOFZqUFBFN1JCVXN2UEtzOXVtZHBhYS8rTFdmN3QrMnQ1NFROLy9nK1IzUGJLN254TjgwODhMRlI1NDJwOVIweGhNQm9BcGF1dHA3L3F6WVRlSUd0Kzk3OFc4ZXFkdTQvZHYydnZpMVIrczI3bTFhSjVlOEh4L2pqQUJRSGRNL2RNeVVaZk5MVFgvbFI3OTg0L0VOOVptMTVzNkhCM2ZzcTgrc2QrcSs1dXkyS2NYdXlNMDRJd0JVVGUvMTV6VzN0NVNhM25mcml1R0JvVnBQZVdQVnhpMC8vbFd0cDd5YnlVdG56L3JJa2xMVEdYOEVnS3Fac09ESStYOXlhcW5wZTlhOThkSzNuNnpwaU9HQm9iNWJWOVIweEFIWTlrN1ZDUURWTlAveVU0OVlPS1hVOUEzZmZtclAydGNiOS9FUGJONmx0cjFUWlFKQU5UVzFOZmZlVU96cnFUWDlGL3FlOVRWL2hYRUFIWE1tTGZoVDI5NnBNZ0dneW80OFk5Nk1QemkyMVBRM1ZtMTg1VWUvck1Vajk5ZmxNNFozWTlzN3RTQUFWRi9QdGU5dm5WVHNKbkV2M3ZuSTRCdFYvbHJBbGgvLzZ2WEg2blNWMFR2WjlrNk5DQURWMXpiMWlJVlhMU3MxZmYvclZiNU9mM0RIdmpWMzF1OTdCbTlqMnp1MUl3RFV4T3lQSFQvcHhKbWxwbS8rNFF2Ym45cFVyVWRiKzdlUDd0KzJwMXFQTmxxMnZWTTdBa0J0TkRmMTNsaHVVZTFJWmZWWFZvenNyOEs5ZW5ZOHUvbmxmeXUyZ25qaWNiYTlVME1DUUsxTVhEeHR6aDhYZS9MYTgrSzJEZmM4ZFlnUE1qSTB2THJRM1VZcmxVcWx1ZWtZMjk2cEpRR2dobzcrM0pudE00dTlmYkgrVzAvc2ZXbjdvVHpDeG51ZjNiMzZ0V3FkWjdUbWZQeUVyaE5zZTZlR0JJQWFhdWxzVzNSZHNROHdod2VHK3I0NjlxOEY3TnUwWS8zZlAxN0Y4NHhLKy9UT2hWZWVWV282SVFTQTJpcDdDZVByajc2MDVUOVdqKzNQOXQrK2NtaFBzWjNEUGRlZTA5SmwyenUxSlFEVVhOa3ZNYTM1NjRjSGR3eU05ays5K3NDYTExYXNyY1Y1RHNhVVpmTnRlNmNPQklDYTY1Z3phY0ZuVGlzMWZmOXJlOVorZlhSZkN4amF2Yi8vcjFiVzZEenZxYm05cGZlRzVhV21FMFVBcUlkNW56NmxzNmZZamN4ZS92N1Bkenc3aWdWZTY3NzUyTUFydTJwM25nT2IveG5iM3FrVEFhQWVtbHFiZTI5YVh1eFd4cU5aNGJ2ckYxczNmZmU1V3AvbzNSelJQV1grWlV0TFRTZU5BRkFuazVmT21YbmhjYVdtNzE3OTJzWjduM252bnhzZVdYM0xneVBEcGE3OHIvVGVzTnkyZCtyR3J4cjEwMzNOMmExSEZsdG51Tzd1VmZzMjdUand6Mno2M3M5Mi9ueExmYzd6VGpNdlhIems2WE5MVFNlUUFGQS9iVk1tZEY5ZDdDWnh3M3NIKzI1NzZBQS9NTEIxOTlwdlBGYTM4N3hONitTTzdtdHNlNmV1QklDNm12V1JKWk9Yemk0MWZkdktkYS8rcFAvZC91dWFPeDRlMmpucUMwYXJwZnVhczl1bTJ2Wk9YUWtBOWRWVTZiMWhlVk5yc1YrOC9qc2VIdHIxVzU3bHR6MnlmdXQvOWRYL1BHK2FmSXB0N3hRZ0FOUmJaKzlSY3k4NXVkVDBnUzI3MXQ3MTl2ZDVodmNOOWgvdzNhR2FhbXB0N3IyeDNDVlNCQk1BQ2pqNml0TTc1a3dxTmYyZG4vU3UvNGNuOW00NHBOdkdIWXA1bDU3YzJYdFVxZWtrRXdBS2FKN1F1dWpMNXhZYi85WnJQWGV2MmJiaG41OHVkUmJiM2lsSUFDampxT1VMcC8xT2Q2bnB1MzZ4ZGROM25xMVVLcFdSU3QrdEswWUdxN0E2Wm14c2U2Y2dBYUNZbmkrZjI5TFpWbXI2dXI5N2ZOL21uWnQvK01MMko2dTJQSEswcHYxZWoyM3ZGQ1FBRk5NeHEydkJGV2VVbWo2MGUvL3F2L2p2NnE2UEg1V1d6clpGWHlyM1BoZ0lBR1hOdmZqRWljZE9Lelg5OVVkZkdueGpiNm5wWmRlbFFVVUFLS3VwcGVoTjRzcVplTnowZ2d1VDRVMENRR0dUVHB3MSsyUEhsejVGZmRuMnp1RkJBQ2h2NFJlV3RVMDlvdlFwNnNlMmR3NFRBa0I1clpNNnVyOTRkdWxUMUVuN05OdmVPVndJQUllRm1SZWszQW01NXpyYjNqbGNDQUNIaTk0YngvOHVGTnZlT2F5TTgvL2ZhQ0JITEJ6bjJ4QnRlK2R3NHp2b2pOcXFpKzdiKzFLeFc2YzFydUdCb1ZVWDNWZWpCNTk3OFVrOTE1MVRvd2RudlBJS0FDQ1VBQUNFRWdDQVVBSUFFRW9BQUVJSkFFQW9BUUFJSlFBQW9RUUFJSlFBQUlRU0FJQlFBZ0FRU2dBQVFna0FRQ2dCQUFnbEFBQ2hCQUFnbEFBQWhCSUFnRkIyQWpOcXA5OS9TY0hwQTF0MlBmR0o3d3p0R1N4NGhuZWE4ZUZqRnYvNUIwdWZBa2JIS3dBYVRQdU1pZk11VzFyNkZHL1IzTjZ5OEtwbHBVOEJveVlBTko1NWw1M1NNYXVyOUNsK2JlNm5UdW1ZZlJpZEJ3NlNBTkI0bWp0YUYxNTFWdWxUL0ovMjZaM3pMMTlhK2hRd0ZnSkFRNXJ4NFdNbm5UaXo5Q2txbFVwbDRaVm50WFMybFQ0RmpJVUEwSmlhS2ozWG5sUDZFSld1SmROblhyaTQ5Q2xnakFTQVJqWHBwRm5UUDNSTTJUUDBYSHRPcGJtcDdCbGd6QVNBQnRiOWhXWE5IY1V1Wlo3MmdVV1RUNTFUYWpvY09nR2dnWFhNN3BwNzZjbEZSamUzdDNSZjdkSlBHcHNBME5pbS9XNTNrYm1kaTQ2YU1HOXlrZEZRTFFJQUVFb0FBRUlKQUVBb0FRQUlKUUFBb1FRQUlGVFRCZjAzbHo0RERXYlZSZmZ0ZldsNzZWUHdGbk12UHFubnV2TDN4cUN4ZUFVQUVFb0FBRUlKQUVBb0FRQUlKUUFBb1FRQUlKUUFBSVFTQUlCUUFnQVFTZ0FBUWdrQVFDZ0JBQWdsQUFDaEJBQWdsQUFBaEJJQWdGQUNBQkJLQUFCQ0NRQkFxTmJTQjZEeG5INy9KYVdQOEdzN245L3k5T1gzMTM5dTE1SVpwL3pUUmZXZkMxWGtGUUJBS0FFQUNDVUFBS0VFQUNDVUFBQ0VFZ0NBVUFJQUVFb0FBRUlKQUVBb0FRQUlKUUFBb1FRQUlKUUFBSVFTQUlCUUFnQVFTZ0FBUWdrQVFDZ0JBQWdsQUFDaEJBQWdsQUFBaEJJQWdGQUNBQkJLQUFCQ0NRQkFLQUVBQ0NVQUFLRUVBQ0NVQUFDRUVnQ0FVQUlBRUVvQUFFSUpBRUFvQVFBSUpRQUFvUVFBSUpRQUFJUVNBSUJRQWdBUVNnQUFRZ2tBUUNnQkFBZ2xBQUNobWk3b3Y3bjBHUUFvd0NzQWdGQUNBQkJLQUFCQ0NRQkFLQUVBQ0NVQUFLRUVBQ0NVQUFDRUVnQ0FVQUlBRUVvQUFFSUpBRUFvQVFBSUpRQUFvUVFBSUpRQUFJUVNBSUJRQWdBUVNnQUFRZ2tBUUNnQkFBZ2xBQUNoQkFBZ2xBQUFoQklBZ0ZBQ0FCQktBQUJDQ1FCQUtBRUFDQ1VBQUtFRUFDQ1VBQUNFRWdDQVVBSUFFRW9BQUVJSkFFQW9BUUFJSlFBQW9RUUFJSlFBQUlRU0FJQlFBZ0FRU2dBQVFna0FRQ2dCQUFnbEFBQ2hCQUFnbEFBQWhCSUFnRkFDQUJCS0FBQkNDUUJBS0FFQUNDVUFBS0VFQUNDVUFBQ0VFZ0NBVUFJQUVFb0FBRUlKQUVBb0FRQUlKUUFBb1FRQUlKUUFBSVFTQUlCUUFnQVFTZ0FBUWdrQVFDZ0JBQWdsQUFDaEJBQWdsQUFBaEJJQWdGQUNBQkJLQUFCQ0NRQkFLQUVBQ0NVQUFLRUVBQ0NVQUFDRUVnQ0FVQUlBRUVvQUFFSUpBRUFvQVFBSUpRQUFvUVFBSUpRQUFJUVNBSUJRQWdBUVNnQUFRZ2tBUUNnQkFBZ2xBQUNoQkFBZ2xBQUFoQklBZ0ZBQ0FCQktBQUJDQ1FCQUtBRUFDQ1VBQUtFRUFDQ1VBQUNFRWdDQVVBSUFFRW9BQUVJSkFFQW9BUUFJSlFBQW9RUUFJSlFBQUlRU0FJQlFBZ0FRU2dBQVFna0FRQ2dCQUFnbEFBQ2hCQUFnbEFBQWhCSUFnRkFDQUJCS0FBQkNDUUJBS0FFQUNDVUFBS0VFQUNDVUFBQ0VFZ0NBVUFJQUVFb0FBRUlKQUVBb0FRQUlKUUFBb1FRQUlKUUFBSVFTQUlCUUFnQVFTZ0FBUWdrQVFDZ0JBQWdsQUFDaEJBQWdsQUFBaEJJQWdGQUNBQkJLQUFCQ0NRQkFLQUVBQ0NVQUFLRUVBQ0NVQUFDRUVnQ0FVQUlBRUVvQUFFSUpBRUFvQVFBSUpRQUFvUVFBSUpRQUFJUVNBSUJRQWdBUVNnQUFRZ2tBUUNnQkFBZ2xBQUNoQkFBZ2xBQUFoQklBZ0ZBQ0FCQktBQUJDQ1FCQUtBRUFDQ1VBQUtFRUFDQ1VBQUNFRWdDQVVQOExxNHFvUXdKd0tGb0FBQUFBU1VWT1JLNUNZSUk9IiwgInNpemVzIjogIjUxMng1MTIiLCAidHlwZSI6ICJpbWFnZS9wbmciLCAicHVycG9zZSI6ICJtYXNrYWJsZSJ9XX0=">
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAAGfklEQVR4nO3cS2xUZRiH8Xdm2mlLO4UCbWlLoWUqIEgFMXItCy+RoEbRhQkSjVE2avAaoa6MiTWKmsBCQ4yJLkwkxgXGmLgx3DQEgqiAVtOWq1YoRcBepO3MuDBxMfIH+rZ2eqbPb8Vl3vN9TR9OyjenDa1qe9mAywlnegMYvYgDEnFAIg5IxAGJOCARByTigEQckIgDEnFAIg5IxAGJOCARByTigEQckIgDEnFAIg5IxAGJOCARByTigEQckIgDEnFAIg5IxAGJOCARByTigEQckIgDEnFAIg5IxAGJOCARByTigEQckIgDEnFAIg5IxAGJOCARByTigEQckIgDEnFAIg5IxAEpJ9MbGIST7397Yut+x2DR7NL6D1aHwqHh2kmid+Dgg9su/d7lmI1vbJhy/5zh2sn/Kkh3jqkPzy+oKXEMdjV3tG87PIw7ObF1v6+M2LzyKauDUYYFK45QbriuscFc//5PbN1/6bTn0/lf3b90tn98yDEYioTrGlf49p8RQYrDzIoXVJTdPcsxmOjpb3tjzzDsIJlqadqZSqYco1UP1Y+rmzgMexgpAYvDzGrXL86dkO8YPLf7eOdXbUNcvf2TI10/djgG8ytj1esWDnH1ERa8OHLG59c8vcQ32/bWN4nuPvfSfR3dx9/d55udsaEhnBekL/8tiHGYWdldM8cvrHQM9nV0H3/H+dk1s7ZNXyd6+h2Dk++Ilyypdq+bKYGMw8ziGxvC0YhjsP3TH/88fNoxeG7Xsc4dRx2DkaJo7XNLHYMZF9Q4CqZPqHpkvmcymWpt2p1KJAc1lOjpb9v0tWc5s5onF0UnjfPNZlZQ4zCzqY8sKJg23jHY3dL560c/DGrE/T/h2A3lU1Zf7xgcDQIcRzgaiTeu8M2efO/AX79evMYXdzWf9Z2hhSLh+EsNNnwnsyMswHGY2fiFlWWrZjoGk5cGWl+/pmOPVDLV2rTLd7BRuaa+sG6SY3CUCHYcZlbzzJKc4jzH4Pm9Jzu+bLnqy9q3He5q9hxs5FXEpgXtYCNN4OPInZBfs36xb/bo298M/HnpCi/oO9Pte6vPzOIbGsL5ATvYSBP4OMys/J7ZxQsqHIP9f/Qe27L3Ci9o3bTHebBx24ySpcE72EiTDXFYyOoaG0K5no/l9GfNF79rv+xfde44em7nMcc1I0XR2ueXOQZHm6yIw6ygpqRq7XzPZMpamnan+tOPPRI9/W1vOg82pj9xS3RyIA820mRJHGZW/dhN+VOLHYO9x/449eHBtD88/u6+vjPdjqvFbiirCMizPFeVPXGEo5H4hgbf7KkPDvaeuPDvb7t+6mj/5IjjOqFIOP7SiuAebKTJnjjMbMKiqaV31jkGk32J1td2/fPrVDLV0rTLnAcb8wJ9sJEmq+Iws9pnl+bEPMceFw78dubzn82s/eND3T+fdVwhryI2bd3NjsFRK9viyJ1YMP2pRb7Zo5v3djV3+A82Xlwe9IONNNkWh5lNue/6WH25Y3Dgwl+HHt+e6B1wzE66bUbJsmmOwdEsC+OwkNU1rgjleD60ZF/CMRUpjM4I5hMbV5aNcZiNi0+sWlM/YstNf+KWaGnhiC03YrIzDjOrXrcwvzI2AgsVzS2reCBLDjbShFa1vZzpPQzOkfVfnN97MtO78Chded3MV27N9C4GIWvvHBg64oBEHJCIAxJxQCIOSMQBiTggBe9dxLlbVvkGU4nkd2s/7Wk9N5TVS5ZUz9ns3EDgjKE7RygSjr+4fEhXyA3XvpANTw5fozEUh5kVL6goXXmde7xq7Y0F1Z7vzg2osRWHmdU8vThSGHUM5pUXVT9607DvZzQbc3FEJ40rdP1grlh9eZY96HVVYy4OXDvigMTzHCOH5zmQPYgDEnFAIg5IxAGJOCARByTigBS8Nwvcz3P869C67Re//32wU5PviM969fYhLh0s3DkgEQck4oBEHJCIAxJxQCIOSMQBiTggEQck4oBEHJCIAxJxQCIOSMQBiTggEQck4oBEHJCC94Dx0M17795MbyEYuHNAIg5IxAGJOCARByTigEQckIgDEnFAIg5IxAGJOCARByTigEQckIgDEnFAIg5IxAGJOCARByTigEQckIgDEnFAIg5IxAGJOCARByTigEQckIgDEnFAIg5IxAGJOCARByTigEQckIgDEnFAIg5IxAGJOCARByTigEQckIgDEnFAIg5IxAGJOCARB6S/AZpBThGLnvxoAAAAAElFTkSuQmCC">
+<style>
+  :root {
+    --bg: #efe8d8;
+    --panel: #fbf7ea;
+    --panel-2: #f0e8d2;
+    --border: #dbd0b4;
+    --text: #26221a;
+    --text-sub: #7d7361;
+    --accent: #16a34a;
+    --accent-dim: #15803d;
+    --warn: #d97706;
+    --danger: #dc2626;
+    --blue: #2563eb;
+    --radius: 12px;
+  }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Noto Sans JP", sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  .app {
+    max-width: 600px; margin: 0 auto;
+    padding: 16px 14px 100px;
+    padding-top: calc(16px + env(safe-area-inset-top));
+    padding-bottom: calc(100px + env(safe-area-inset-bottom));
+  }
+  header {
+    display: flex; align-items: baseline; justify-content: space-between;
+    padding: 8px 4px 18px;
+  }
+  h1 { margin: 0; font-size: 18px; font-weight: 700; letter-spacing: 0.02em; }
+  .badge {
+    font-size: 11px; color: var(--text-sub);
+    border: 1px solid var(--border); padding: 3px 8px; border-radius: 999px;
+  }
+  .tabs {
+    display: flex; gap: 4px; background: var(--panel); padding: 4px;
+    border-radius: var(--radius); margin-bottom: 14px;
+  }
+  .tab {
+    flex: 1; padding: 10px 4px; text-align: center; border-radius: 8px;
+    font-size: 12px; font-weight: 600; color: var(--text-sub);
+    cursor: pointer; transition: all 0.15s; user-select: none;
+  }
+  .tab.active { background: var(--panel-2); color: var(--text); }
+  .card {
+    background: var(--panel); border-radius: var(--radius);
+    padding: 14px; margin-bottom: 12px;
+    border: 1px solid var(--border);
+  }
+  .card-title {
+    font-size: 12px; font-weight: 600; color: var(--text-sub);
+    text-transform: uppercase; letter-spacing: 0.08em;
+    margin-bottom: 12px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .card-title .link {
+    color: var(--blue); font-size: 12px; cursor: pointer;
+    text-transform: none; letter-spacing: 0;
+  }
+  .row {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 12px; flex-wrap: nowrap;
+  }
+  .row:last-child { margin-bottom: 0; }
+  .row label {
+    flex: 1 1 0; min-width: 0;
+    font-size: 14px; color: var(--text);
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .row label .sub {
+    font-size: 11px; color: var(--text-sub);
+    display: block; margin-top: 2px; white-space: normal;
+  }
+  /* ラベルが長い行は縦並びにする */
+  .row-stack {
+    display: flex; flex-direction: column; align-items: stretch;
+    gap: 6px; margin-bottom: 12px;
+  }
+  .row-stack label {
+    font-size: 13px; color: var(--text-sub); font-weight: 600;
+  }
+  .row-stack label .sub {
+    color: var(--text-sub); font-size: 11px; font-weight: 400;
+    margin-left: 6px;
+  }
+  .row-stack input, .row-stack select { width: 100%; }
+  input[type="text"], input[type="number"], select {
+    background: var(--panel-2); border: 1px solid var(--border);
+    color: var(--text); padding: 10px 12px; border-radius: 8px;
+    font-size: 16px; font-family: inherit; width: 100%;
+    -webkit-appearance: none; appearance: none;
+  }
+  input:focus, select:focus { outline: none; border-color: var(--accent); }
+  input[readonly] { color: var(--text-sub); }
+  .num-input { width: 100px; text-align: right; flex: 0 0 auto; }
+  .qty-input { width: 60px; text-align: center; flex: 0 0 auto; }
+  select {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'><path fill='%238d97a4' d='M2 4l4 4 4-4z'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    padding-right: 30px;
+  }
+  .total-line {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 8px 0; font-size: 14px;
+  }
+  .total-line.big {
+    border-top: 1px solid var(--border); margin-top: 10px; padding-top: 12px;
+    font-size: 16px; font-weight: 700;
+  }
+  .result-card {
+    background: linear-gradient(135deg, #fbf7ea 0%, #f2f4dd 100%);
+    border: 1px solid var(--accent-dim);
+  }
+  .monthly-highlight {
+    background: var(--accent);
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin: 12px 0;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 10px;
+  }
+  .monthly-label {
+    color: #ffffff; font-size: 14px; font-weight: 700;
+    opacity: 0.95;
+  }
+  .monthly-value {
+    color: #ffffff; font-size: 30px; font-weight: 800;
+    font-variant-numeric: tabular-nums; line-height: 1;
+  }
+  .monthly-value.yen::before {
+    content: "¥"; font-size: 20px; font-weight: 700;
+    margin-right: 2px; color: #ffffff; opacity: 0.8;
+  }
+  .input-yen-wrap {
+    display: flex; align-items: center; gap: 4px;
+  }
+  .input-yen-wrap.monthly { width: 62%; }
+  .input-yen-wrap.monthly .yen-prefix {
+    color: #ffffff; font-size: 20px; font-weight: 700; flex-shrink: 0;
+  }
+  .input-yen-wrap.monthly .monthly-input { width: 100%; }
+  .input-yen-wrap.box { justify-content: center; margin-top: 4px; }
+  .input-yen-wrap.box .yen-prefix {
+    color: var(--accent); font-size: 15px; font-weight: 700; flex-shrink: 0;
+  }
+  #profit-box.warning .yen-prefix { color: var(--warn); }
+  #profit-box.danger .yen-prefix { color: var(--danger); }
+  .input-yen-wrap.box .box-input { margin-top: 0; }
+  .monthly-input {
+    background: #fffdf4;
+    border: 1px solid rgba(255,255,255,0.7);
+    border-radius: 8px;
+    color: var(--text); font-size: 28px; font-weight: 800;
+    font-variant-numeric: tabular-nums; line-height: 1;
+    text-align: right; padding: 6px 10px; width: 100%;
+    -webkit-appearance: none; appearance: none;
+  }
+  .monthly-input:focus { outline: none; border-color: #14532d; background: rgba(255,255,255,0.85); }
+  .box-input {
+    width: 100%; background: rgba(0,0,0,0.15);
+    border: 1px solid var(--accent); border-radius: 6px;
+    color: var(--accent); font-size: 18px; font-weight: 700;
+    font-variant-numeric: tabular-nums; text-align: center;
+    padding: 4px 6px; margin-top: 4px;
+    -webkit-appearance: none; appearance: none;
+  }
+  .box-input:focus { outline: none; border-color: #fff; }
+  #profit-box.warning .box-input { color: var(--warn); border-color: var(--warn); }
+  #profit-box.danger .box-input { color: var(--danger); border-color: var(--danger); }
+  .result-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+    margin-top: 8px;
+  }
+  .result-box {
+    background: var(--panel-2); padding: 12px; border-radius: 8px;
+    text-align: center;
+  }
+  .result-box .label {
+    font-size: 11px; color: var(--text-sub);
+    text-transform: uppercase; letter-spacing: 0.05em;
+  }
+  .result-box .value {
+    font-size: 20px; font-weight: 700; margin-top: 4px;
+    font-variant-numeric: tabular-nums;
+  }
+  .result-box.profit .value { color: var(--accent); }
+  .result-box.profit-rate .value { color: var(--blue); }
+  .result-box.warning .value { color: var(--warn); }
+  .result-box.danger .value { color: var(--danger); }
+  .btn {
+    padding: 12px 16px; border: none; border-radius: 8px;
+    font-size: 14px; font-weight: 600; cursor: pointer;
+    font-family: inherit; transition: all 0.15s;
+  }
+  .btn-primary { background: var(--accent); color: #ffffff; width: 100%; }
+  .btn-primary:active { background: var(--accent-dim); transform: scale(0.98); }
+  .btn-secondary { background: var(--panel-2); color: var(--text); border: 1px solid var(--border); }
+  .btn-danger { background: transparent; color: var(--danger); border: 1px solid var(--danger); }
+  .btn-small { padding: 8px 12px; font-size: 13px; }
+  .btn-row { display: flex; gap: 8px; }
+  .btn-row .btn { flex: 1; }
+  .saved-item {
+    background: var(--panel-2); padding: 12px; border-radius: 8px;
+    margin-bottom: 8px; cursor: pointer; transition: all 0.15s;
+    border: 1px solid transparent;
+  }
+  .saved-item:active { border-color: var(--accent); }
+  .saved-item .name { font-size: 15px; font-weight: 600; }
+  .saved-item .meta {
+    font-size: 12px; color: var(--text-sub); margin-top: 4px;
+    display: flex; gap: 12px; flex-wrap: wrap;
+  }
+  .empty {
+    text-align: center; color: var(--text-sub);
+    padding: 40px 20px; font-size: 14px;
+  }
+  .hint {
+    font-size: 11px; color: var(--text-sub);
+    margin-top: 6px; line-height: 1.4;
+  }
+  .yen::before { content: "¥"; margin-right: 2px; color: var(--text-sub); }
+  .modal-bg {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.7);
+    display: none; align-items: flex-end; justify-content: center;
+    z-index: 100;
+  }
+  .modal-bg.show { display: flex; }
+  .modal {
+    background: var(--panel); border-radius: var(--radius) var(--radius) 0 0;
+    padding: 20px; max-width: 600px; width: 100%;
+    border: 1px solid var(--border);
+    max-height: 90vh; overflow-y: auto;
+  }
+  .modal h3 {
+    margin: 0 0 14px; font-size: 16px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .modal .close {
+    background: none; border: none; color: var(--text-sub);
+    font-size: 24px; cursor: pointer; padding: 0 8px;
+  }
+  .toast {
+    position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%);
+    background: var(--accent); color: #ffffff; padding: 10px 20px;
+    border-radius: 999px; font-size: 13px; font-weight: 600;
+    opacity: 0; pointer-events: none; transition: opacity 0.2s;
+    z-index: 200;
+  }
+  .toast.show { opacity: 1; }
+  .master-item {
+    background: var(--panel-2); padding: 12px; border-radius: 8px;
+    margin-bottom: 8px; display: grid;
+    grid-template-columns: 1fr auto; gap: 8px; align-items: center;
+  }
+  .master-item.clickable { cursor: pointer; }
+  .master-item.clickable:active { background: var(--panel); }
+  .master-item .info { min-width: 0; }
+  .master-item .info .name {
+    font-size: 14px; font-weight: 600;
+    overflow-wrap: anywhere; word-break: break-word;
+    line-height: 1.4;
+  }
+  .master-item .info .detail { font-size: 12px; color: var(--text-sub); }
+  .master-item .actions { display: flex; gap: 4px; }
+  /* 長押しドラッグ並べ替え */
+  .master-item.draggable { touch-action: pan-y; position: relative; }
+  .master-item.drag-active {
+    background: var(--panel);
+    border: 1px solid var(--accent);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+    opacity: 0.95; z-index: 50;
+  }
+  .master-item.drag-pressing {
+    background: var(--panel);
+    transform: scale(0.98);
+    transition: transform 0.15s, background 0.15s;
+  }
+  .master-item.drop-target-before::before,
+  .master-item.drop-target-after::after {
+    content: ""; position: absolute; left: 0; right: 0; height: 3px;
+    background: var(--accent); border-radius: 2px;
+  }
+  .master-item.drop-target-before::before { top: -4px; }
+  .master-item.drop-target-after::after { bottom: -4px; }
+  .drag-hint {
+    font-size: 11px; color: var(--text-sub); margin: 4px 0 8px 4px;
+  }
+  .icon-btn {
+    background: transparent; border: 1px solid var(--border);
+    color: var(--text-sub); padding: 6px 10px; border-radius: 6px;
+    font-size: 12px; cursor: pointer; font-family: inherit;
+  }
+  .icon-btn:active { background: var(--panel); }
+  .product-line {
+    display: grid; grid-template-columns: 1fr 60px 100px 30px;
+    gap: 6px; align-items: center;
+    padding: 8px; background: var(--panel-2); border-radius: 6px;
+    margin-bottom: 6px;
+  }
+  .product-line .name {
+    font-size: 13px; min-width: 0;
+    overflow-wrap: anywhere; word-break: break-word; line-height: 1.35;
+  }
+  .product-line .name small { display: block; color: var(--text-sub); font-size: 10px; }
+  .product-line input { padding: 6px 8px; font-size: 14px; }
+  .product-line .subtotal {
+    text-align: right; font-variant-numeric: tabular-nums; font-size: 13px;
+  }
+  .product-line .del {
+    background: none; border: none; color: var(--danger);
+    font-size: 18px; cursor: pointer; padding: 4px;
+  }
+  .checkbox-row {
+    display: flex; align-items: center; gap: 10px;
+    padding: 8px 0; flex-wrap: nowrap;
+  }
+  .checkbox-row input[type="checkbox"] {
+    width: 20px; height: 20px; accent-color: var(--accent); flex-shrink: 0;
+  }
+  .checkbox-row label {
+    flex: 1 1 auto; min-width: 0; font-size: 14px;
+    word-break: keep-all; overflow-wrap: normal;
+  }
+  .checkbox-row .qty { width: 56px; text-align: center; flex: 0 0 auto; }
+  .checkbox-row .amount {
+    font-size: 11px; color: var(--text-sub);
+    font-variant-numeric: tabular-nums;
+    flex: 0 0 auto; text-align: right; white-space: nowrap;
+  }
+  .add-product-btn {
+    background: var(--panel-2); border: 1px dashed var(--border);
+    color: var(--text-sub); padding: 10px; border-radius: 8px;
+    width: 100%; cursor: pointer; font-size: 13px; font-family: inherit;
+    margin-top: 6px;
+  }
+  .construction-summary {
+    background: var(--panel-2); padding: 10px 12px; border-radius: 8px;
+    margin-top: 10px; font-size: 13px;
+  }
+  .construction-summary div {
+    display: flex; justify-content: space-between;
+    padding: 3px 0; color: var(--text-sub);
+  }
+  .construction-summary div.total {
+    color: var(--text); font-weight: 700; padding-top: 8px;
+    border-top: 1px solid var(--border); margin-top: 4px;
+  }
+  details {
+    background: var(--panel-2); border-radius: 8px; padding: 10px 12px;
+    margin-bottom: 8px;
+  }
+  details summary {
+    cursor: pointer; font-size: 13px; font-weight: 600;
+    color: var(--text-sub); list-style: none;
+  }
+  details summary::-webkit-details-marker { display: none; }
+  details summary::before {
+    content: "▶"; margin-right: 6px; font-size: 10px;
+    display: inline-block; transition: transform 0.15s;
+  }
+  details[open] summary::before { transform: rotate(90deg); }
+  details > .content { margin-top: 10px; }
+  .master-tabs {
+    display: flex; gap: 4px; margin-bottom: 14px;
+    background: var(--panel-2); padding: 3px; border-radius: 8px;
+  }
+  .master-tab {
+    flex: 1; padding: 8px; text-align: center;
+    font-size: 12px; font-weight: 600; color: var(--text-sub);
+    cursor: pointer; border-radius: 6px;
+  }
+  .master-tab.active { background: var(--panel); color: var(--text); }
+  .folder-add-row {
+    display: flex; gap: 6px; margin: 10px 0;
+  }
+  .folder-add-row input { flex: 1; min-width: 0; }
+  .folder-add-row .btn { flex-shrink: 0; white-space: nowrap; }
+  /* エクスプローラー2ペイン */
+  .explorer-split {
+    display: flex; gap: 0;
+    border: 1px solid var(--border); border-radius: 8px; overflow: hidden;
+    min-height: 200px; max-height: 55vh;
+  }
+  .tree-pane {
+    width: 40%; min-width: 120px; flex-shrink: 0;
+    background: var(--panel-2); border-right: 1px solid var(--border);
+    overflow-y: auto; overflow-x: hidden; padding: 6px 4px;
+  }
+  .content-pane {
+    flex: 1; min-width: 0; overflow-y: auto; padding: 6px;
+    display: flex; flex-direction: column; gap: 4px;
+  }
+  .tr-row {
+    display: flex; align-items: center; gap: 2px;
+    padding: 6px 4px; border-radius: 6px; font-size: 13px;
+  }
+  .tr-row.sel { background: rgba(127,209,168,0.15); }
+  .tr-row.sel .tr-label { color: var(--accent); font-weight: 700; }
+  .tr-arrow {
+    width: 16px; flex-shrink: 0; text-align: center;
+    font-size: 9px; color: var(--text-sub); cursor: pointer;
+    transition: transform 0.15s; display: inline-block;
+  }
+  .tr-arrow.open { transform: rotate(90deg); }
+  .tr-label {
+    flex: 1; min-width: 0; cursor: pointer; color: var(--text);
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  }
+  /* パンくず */
+  .breadcrumb {
+    display: flex; flex-wrap: wrap; align-items: center; gap: 2px;
+    font-size: 13px; padding: 8px 4px; margin-bottom: 6px;
+  }
+  .breadcrumb .crumb {
+    color: var(--blue); cursor: pointer; padding: 2px 4px; border-radius: 4px;
+  }
+  .breadcrumb .crumb.current { color: var(--text); font-weight: 700; cursor: default; }
+  .breadcrumb .crumb-sep { color: var(--text-sub); }
+  /* エクスプローラー行 */
+  .explorer { display: flex; flex-direction: column; gap: 4px; }
+  .ex-row {
+    display: flex; align-items: center; gap: 4px;
+    background: var(--panel-2); border: 1px solid var(--border);
+    border-radius: 8px; padding: 8px 8px;
+  }
+  .content-pane .ex-row { background: var(--panel); }
+  .ex-row .ex-open {
+    display: flex; align-items: center; gap: 6px;
+    flex: 1; min-width: 0; cursor: pointer;
+  }
+  .ex-icon { font-size: 16px; flex-shrink: 0; }
+  .ex-name {
+    font-size: 13px; color: var(--text); min-width: 0;
+    overflow-wrap: anywhere; line-height: 1.3;
+  }
+  .ex-name small { display: block; color: var(--text-sub); font-size: 10px; margin-top: 1px; }
+  .ex-row.folder .ex-name { font-weight: 700; }
+  .ex-meta { font-size: 10px; color: var(--text-sub); margin-left: auto; flex-shrink: 0; }
+  .ex-chev { color: var(--text-sub); font-size: 16px; flex-shrink: 0; }
+  .ex-add {
+    color: var(--accent); font-size: 18px; font-weight: 700;
+    flex-shrink: 0; padding: 0 2px;
+  }
+  .ex-actions { display: flex; gap: 3px; flex-shrink: 0; flex-direction: column; }
+  .ex-actions .icon-btn { padding: 4px 6px; font-size: 11px; }
+  #edit-product-folder {
+    width: 100%; padding: 10px; border-radius: 8px;
+    background: var(--panel-2); border: 1px solid var(--border);
+    color: var(--text); font-size: 14px; font-family: inherit;
+  }
+  /* 階層表示（フォルダ風） */
+  .brand-group { margin-bottom: 10px; }
+  .brand-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 10px 12px; background: var(--panel-2); border-radius: 8px;
+    cursor: pointer; user-select: none;
+    border: 1px solid var(--border); gap: 8px;
+  }
+  .brand-toggle {
+    display: flex; align-items: center; gap: 8px;
+    flex: 1; min-width: 0; cursor: pointer;
+  }
+  .folder-actions { display: flex; gap: 6px; flex-shrink: 0; }
+  .folder-actions .icon-btn { padding: 5px 8px; }
+  .icon-btn.danger { color: var(--danger); border-color: var(--danger); }
+  .brand-header .brand-name {
+    font-size: 14px; font-weight: 700; color: var(--text);
+    display: flex; align-items: center; gap: 8px;
+    min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  }
+  .brand-header .brand-name::before {
+    content: "▶"; font-size: 10px; color: var(--text-sub);
+    transition: transform 0.15s; flex-shrink: 0;
+  }
+  .brand-group.open .brand-header .brand-name::before {
+    transform: rotate(90deg);
+  }
+  .brand-header .brand-count {
+    font-size: 11px; color: var(--text-sub); flex-shrink: 0;
+  }
+  .brand-content {
+    display: none; padding: 8px 0 0 12px;
+    border-left: 2px solid var(--border); margin-left: 12px;
+    margin-top: 4px;
+  }
+  .brand-group.open .brand-content { display: block; }
+  .type-group { margin-bottom: 8px; }
+  .type-header {
+    font-size: 11px; font-weight: 700; color: var(--text-sub);
+    text-transform: uppercase; letter-spacing: 0.05em;
+    padding: 6px 0 4px; margin-left: 4px;
+  }
+  .form-stack { display: flex; flex-direction: column; gap: 8px; }
+  .rate-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px;
+  }
+  .rate-grid .rate-item .lbl {
+    font-size: 11px; color: var(--text-sub); margin-bottom: 3px;
+  }
+</style>
+</head>
+<body>
+<div class="app">
+  <header>
+    <h1>粗利計算 <span style="font-size:10px;color:var(--text-sub);font-weight:400;">v7</span></h1>
+    <span class="badge">レゾン株式会社</span>
+  </header>
+
+  <div class="tabs">
+    <div class="tab active" data-tab="calc">計算</div>
+    <div class="tab" data-tab="saved">案件<span id="saved-count"></span></div>
+    <div class="tab" data-tab="master">マスタ</div>
+  </div>
+
+  <!-- 計算タブ -->
+  <div id="tab-calc">
+    <div class="card">
+      <div class="card-title">案件名</div>
+      <input type="text" id="project-name" placeholder="例：〇〇歯科クリニック">
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        <span>商材構成</span>
+        <span class="link" onclick="switchToMaster('products')">マスタ編集</span>
+      </div>
+      <div id="product-lines"></div>
+      <button class="add-product-btn" onclick="openAddProduct()">＋ 商材を追加</button>
+      <div class="total-line big">
+        <span>商材小計</span>
+        <span class="yen" id="product-subtotal">0</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        <span>工事費（自動算出）</span>
+        <span class="link" onclick="toggleManualMode()">手動切替</span>
+      </div>
+
+      <div id="auto-construction">
+        <div class="row-stack">
+          <label>カメラ設置台数<span class="sub">明細から自動集計</span></label>
+          <input type="number" id="camera-count" readonly>
+        </div>
+        <div class="row-stack">
+          <label>セキュリティ物件数</label>
+          <input type="number" id="security-count" value="0" min="0" inputmode="numeric">
+        </div>
+        <div class="row-stack">
+          <label>レコーダー台数<span class="sub">2台目以降+¥30,000</span></label>
+          <input type="number" id="recorder-count" value="1" min="1" inputmode="numeric">
+        </div>
+
+        <details>
+          <summary>追加工事費</summary>
+          <div class="content">
+            <div class="checkbox-row">
+              <input type="checkbox" id="ext-takasho">
+              <label for="ext-takasho">高所作業車</label>
+              <input type="number" class="qty-input qty" id="ext-takasho-qty" value="1" min="1" inputmode="numeric">
+              <span class="amount">¥35,000/日</span>
+            </div>
+            <div class="checkbox-row">
+              <input type="checkbox" id="ext-tplinks">
+              <label for="ext-tplinks">TPリンク 小</label>
+              <input type="number" class="qty-input qty" id="ext-tplinks-qty" value="1" min="1" inputmode="numeric">
+              <span class="amount">¥26,000</span>
+            </div>
+            <div class="checkbox-row">
+              <input type="checkbox" id="ext-tplinkl">
+              <label for="ext-tplinkl">TPリンク 大</label>
+              <input type="number" class="qty-input qty" id="ext-tplinkl-qty" value="1" min="1" inputmode="numeric">
+              <span class="amount">¥36,000</span>
+            </div>
+            <div class="checkbox-row">
+              <input type="checkbox" id="ext-maisetsu">
+              <label for="ext-maisetsu">埋設工事</label>
+              <input type="number" class="qty-input qty" id="ext-maisetsu-qty" value="1" min="1" inputmode="numeric">
+              <span class="amount">¥10,000/10m</span>
+            </div>
+            <div class="checkbox-row">
+              <input type="checkbox" id="ext-keidenki">
+              <label for="ext-keidenki">軽電気工事</label>
+              <input type="number" class="qty-input qty" id="ext-keidenki-qty" value="1" min="1" inputmode="numeric">
+              <span class="amount">¥20,000</span>
+            </div>
+            <div class="checkbox-row">
+              <input type="checkbox" id="ext-doshuku">
+              <label for="ext-doshuku">土日祝日工事</label>
+              <input type="number" class="qty-input qty" id="ext-doshuku-qty" value="1" min="1" inputmode="numeric">
+              <span class="amount">¥20,000</span>
+            </div>
+            <div class="checkbox-row">
+              <input type="checkbox" id="ext-service">
+              <label for="ext-service">サービス品設置</label>
+              <input type="number" class="qty-input qty" id="ext-service-qty" value="1" min="1" inputmode="numeric">
+              <span class="amount">¥15,000</span>
+            </div>
+            <div class="checkbox-row">
+              <input type="checkbox" id="ext-saihomon">
+              <label for="ext-saihomon">再訪問</label>
+              <input type="number" class="qty-input qty" id="ext-saihomon-qty" value="1" min="1" inputmode="numeric">
+              <span class="amount">¥30,000</span>
+            </div>
+            <div class="checkbox-row">
+              <input type="checkbox" id="ext-cancel">
+              <label for="ext-cancel">当日キャンセル</label>
+              <input type="number" class="qty-input qty" id="ext-cancel-qty" value="1" min="1" inputmode="numeric">
+              <span class="amount">¥30,000</span>
+            </div>
+            <div class="row-stack">
+              <label>その他実費<span class="sub">Wi-Fi/VPN等</span></label>
+              <input type="number" id="ext-other" value="0" min="0" inputmode="numeric">
+            </div>
+          </div>
+        </details>
+
+        <div class="construction-summary" id="construction-summary"></div>
+      </div>
+
+      <div id="manual-construction-input" style="display:none;">
+        <div class="row-stack">
+          <label>工事費合計<span class="sub">手動入力モード</span></label>
+          <input type="number" id="manual-construction-amount" value="0" min="0" inputmode="numeric">
+        </div>
+      </div>
+      <input type="checkbox" id="manual-construction" style="display:none;">
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        <span>リース条件</span>
+        <span class="link" onclick="switchToMaster('lease')">マスタ編集</span>
+      </div>
+      <div class="row-stack">
+        <label>リース会社</label>
+        <select id="lease-company"></select>
+      </div>
+      <div class="row-stack">
+        <label>期間</label>
+        <select id="lease-term-select"></select>
+      </div>
+      <div class="row-stack">
+        <label>料率（%）</label>
+        <input type="number" id="lease-rate" step="0.001" min="0" inputmode="decimal">
+      </div>
+      <p class="hint">マスタから選択すると料率が自動入力されます。手入力で上書きも可。</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">諸経費</div>
+      <div class="row-stack">
+        <label>諸経費<span class="sub">商品原価＋交通費 一式</span></label>
+        <input type="number" id="cost-total" value="120000" min="0" inputmode="numeric">
+      </div>
+    </div>
+
+    <div class="card result-card">
+      <div class="card-title">計算結果</div>
+      <div class="total-line"><span>商材小計</span><span class="yen" id="result-product">0</span></div>
+      <div class="total-line"><span>工事費合計</span><span class="yen" id="result-construction">0</span></div>
+      <div class="total-line big"><span>販売総額</span><span class="yen" id="result-sales">0</span></div>
+
+      <div class="monthly-highlight">
+        <div class="monthly-label">月額リース料</div>
+        <div class="input-yen-wrap monthly">
+          <span class="yen-prefix">¥</span>
+          <input type="text" id="target-monthly" class="monthly-input" value="15,000" inputmode="numeric">
+        </div>
+      </div>
+
+      <div class="total-line"><span>総支払額</span><span class="yen" id="total-payment">0</span></div>
+      <div class="result-grid">
+        <div class="result-box profit" id="profit-box">
+          <div class="label">粗利（入力可）</div>
+          <div class="input-yen-wrap box">
+            <span class="yen-prefix">¥</span>
+            <input type="text" id="target-profit" class="box-input" inputmode="numeric">
+          </div>
+        </div>
+        <div class="result-box profit-rate">
+          <div class="label">粗利率</div>
+          <div class="value" id="profit-rate">0%</div>
+        </div>
+      </div>
+      <p class="hint" style="margin-top:8px;">月額・粗利のどちらに入力しても、もう一方が自動で逆算されます。</p>
+    </div>
+
+    <div class="btn-row" style="margin-top:14px;">
+      <button class="btn btn-secondary" onclick="resetForm()">リセット</button>
+      <button class="btn btn-primary" onclick="saveProject()">この案件を保存</button>
+    </div>
+  </div>
+
+  <div id="tab-saved" style="display:none;">
+    <div id="saved-list"></div>
+  </div>
+
+  <div id="tab-master" style="display:none;">
+    <div class="master-tabs">
+      <div class="master-tab active" data-master="products">商材</div>
+      <div class="master-tab" data-master="lease">リース会社</div>
+    </div>
+
+    <div id="master-products">
+      <div class="card">
+        <div class="card-title">商材マスタ</div>
+        <div id="master-product-list"></div>
+        <div class="folder-add-row">
+          <input type="text" id="new-folder-name" placeholder="ここに新しいフォルダ">
+          <button class="btn btn-secondary btn-small" onclick="addFolderFromInput()">フォルダ作成</button>
+        </div>
+        <div class="form-stack">
+          <div style="font-size:12px;color:var(--text-sub);margin-top:8px;">このフォルダに商材を追加</div>
+          <input type="text" id="new-product-name" placeholder="商材名（例：4K屋外カメラ）">
+          <input type="number" id="new-product-price" placeholder="単価" inputmode="numeric">
+          <div class="checkbox-row" style="padding:0;">
+            <input type="checkbox" id="new-product-iscamera">
+            <label for="new-product-iscamera" style="font-size:13px;">カメラとしてカウント（工事費算出）</label>
+          </div>
+          <button class="btn btn-primary btn-small" onclick="addProduct()">追加</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="master-lease" style="display:none;">
+      <div class="card">
+        <div class="card-title">リース会社マスタ</div>
+        <div id="master-lease-list"></div>
+        <div class="form-stack">
+          <input type="text" id="new-lease-name" placeholder="リース会社名">
+          <div style="font-size:12px; color:var(--text-sub);">料率（%）</div>
+          <div class="rate-grid">
+            <div class="rate-item"><div class="lbl">60回</div><input type="number" id="new-rate-60" step="0.001" inputmode="decimal" placeholder="1.850"></div>
+            <div class="rate-item"><div class="lbl">84回</div><input type="number" id="new-rate-84" step="0.001" inputmode="decimal" placeholder="1.400"></div>
+          </div>
+          <button class="btn btn-primary btn-small" onclick="addLeaseCompany()">追加</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">データ引き継ぎ</div>
+      <p class="hint" style="margin-top:0;margin-bottom:12px;">商材マスタとリース会社マスタを別のiPhoneに移せます。案件データは含まれません。</p>
+      <div class="btn-row">
+        <button class="btn btn-secondary" onclick="exportMasters()">書き出し</button>
+        <button class="btn btn-secondary" onclick="openImport()">読み込み</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-bg" id="export-modal" onclick="closeModalBg(event, 'export-modal')">
+  <div class="modal" onclick="event.stopPropagation()">
+    <h3>マスタの書き出し <button class="close" onclick="$('export-modal').classList.remove('show')">×</button></h3>
+    <p class="hint" style="margin-top:0;">下のコードを全文コピーして、別のiPhoneの「読み込み」に貼り付けてください。共有ボタンでメモやAirDropにも送れます。</p>
+    <textarea id="export-text" readonly style="width:100%;height:140px;background:var(--panel-2);border:1px solid var(--border);color:var(--text);border-radius:8px;padding:10px;font-size:12px;font-family:monospace;resize:none;"></textarea>
+    <div class="btn-row" style="margin-top:12px;">
+      <button class="btn btn-secondary" onclick="shareExport()">共有</button>
+      <button class="btn btn-primary" onclick="copyExport()">コピー</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-bg" id="import-modal" onclick="closeModalBg(event, 'import-modal')">
+  <div class="modal" onclick="event.stopPropagation()">
+    <h3>マスタの読み込み <button class="close" onclick="$('import-modal').classList.remove('show')">×</button></h3>
+    <p class="hint" style="margin-top:0;">書き出したコードを貼り付けてください。</p>
+    <textarea id="import-text" placeholder="ここにコードを貼り付け" style="width:100%;height:140px;background:var(--panel-2);border:1px solid var(--border);color:var(--text);border-radius:8px;padding:10px;font-size:12px;font-family:monospace;resize:none;"></textarea>
+    <div class="form-stack" style="margin-top:12px;">
+      <div class="checkbox-row" style="padding:0;">
+        <input type="checkbox" id="import-replace">
+        <label for="import-replace" style="font-size:13px;">既存のマスタを置き換える<span class="sub">オフなら追加（重複は名前で判定）</span></label>
+      </div>
+      <button class="btn btn-primary" onclick="doImport()">取り込む</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-bg" id="select-product-modal" onclick="closeModalBg(event, 'select-product-modal')">
+  <div class="modal" onclick="event.stopPropagation()">
+    <h3>商材を選択 <button class="close" onclick="$('select-product-modal').classList.remove('show')">×</button></h3>
+    <div id="select-product-list"></div>
+  </div>
+</div>
+
+<div class="modal-bg" id="edit-product-modal" onclick="closeModalBg(event, 'edit-product-modal')">
+  <div class="modal" onclick="event.stopPropagation()">
+    <h3>商材を編集 <button class="close" onclick="$('edit-product-modal').classList.remove('show')">×</button></h3>
+    <div class="form-stack">
+      <input type="text" id="edit-product-name" placeholder="商材名">
+      <label style="font-size:12px;color:var(--text-sub);">フォルダ</label>
+      <select id="edit-product-folder"></select>
+      <input type="number" id="edit-product-price" placeholder="単価" inputmode="numeric">
+      <div class="checkbox-row" style="padding:0;">
+        <input type="checkbox" id="edit-product-iscamera">
+        <label for="edit-product-iscamera" style="font-size:13px;">カメラとしてカウント</label>
+      </div>
+      <div class="btn-row">
+        <button class="btn btn-danger" onclick="deleteProductFromMaster()">削除</button>
+        <button class="btn btn-primary" onclick="saveProductEdit()">保存</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-bg" id="edit-lease-modal" onclick="closeModalBg(event, 'edit-lease-modal')">
+  <div class="modal" onclick="event.stopPropagation()">
+    <h3>リース会社を編集 <button class="close" onclick="$('edit-lease-modal').classList.remove('show')">×</button></h3>
+    <div class="form-stack">
+      <input type="text" id="edit-lease-name" placeholder="会社名">
+      <div style="font-size:12px; color:var(--text-sub);">料率（%）</div>
+      <div class="rate-grid">
+        <div class="rate-item"><div class="lbl">60回</div><input type="number" id="edit-rate-60" step="0.001" inputmode="decimal"></div>
+        <div class="rate-item"><div class="lbl">84回</div><input type="number" id="edit-rate-84" step="0.001" inputmode="decimal"></div>
+      </div>
+      <div class="btn-row">
+        <button class="btn btn-danger" onclick="deleteLeaseFromMaster()">削除</button>
+        <button class="btn btn-primary" onclick="saveLeaseEdit()">保存</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-bg" id="detail-modal" onclick="closeModalBg(event, 'detail-modal')">
+  <div class="modal" onclick="event.stopPropagation()">
+    <h3 id="modal-title"></h3>
+    <div id="modal-body"></div>
+    <div class="btn-row" style="margin-top:16px;">
+      <button class="btn btn-danger" onclick="deleteCurrent()">削除</button>
+      <button class="btn btn-secondary" onclick="loadCurrent()">読み込み</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const KEY_QUOTES = 'rezon_quotes_v2';
+const KEY_PRODUCTS = 'rezon_products_v1';
+const KEY_LEASE = 'rezon_lease_v1';
+const KEY_FOLDERS = 'rezon_folders_v1';
+const KEY_FOLDERS_MIGRATED = 'rezon_folders_migrated_v1';
+const $ = id => document.getElementById(id);
+const num = id => Number(String($(id).value).replace(/[^\d.-]/g, '')) || 0;
+
+// カンマ付き表示用：入力欄に整形した値をセット
+function setFmt(id, v) { $(id).value = fmt(Math.round(v)); }
+// 入力中のカンマ再整形（カーソルは末尾へ）
+function reformatNumInput(el) {
+  const raw = el.value.replace(/[^\d]/g, '');
+  el.value = raw ? fmt(Number(raw)) : '';
+}
+const fmt = n => Math.round(n).toLocaleString('ja-JP');
+
+let lineProducts = [];
+let currentDetailId = null;
+let editingProductId = null;
+let editingLeaseId = null;
+
+const DEFAULT_PRODUCTS = [
+  // ===== BAIRY カメラ =====
+  { id: 'p_b01', name: 'BC-B2002F【バレット/200万画素/単焦点】', brand: 'BAIRY', type: 'カメラ', price: 15000, isCamera: true },
+  { id: 'p_b02', name: 'BC-M2002F【ドーム/200万画素/単焦点】', brand: 'BAIRY', type: 'カメラ', price: 15000, isCamera: true },
+  { id: 'p_b03', name: 'BC-B5002FA【AI/バレット/500万画素/単焦点】', brand: 'BAIRY', type: 'カメラ', price: 30000, isCamera: true },
+  { id: 'p_b04', name: 'BC-M5002FA【AI/ドーム/500万画素/単焦点】', brand: 'BAIRY', type: 'カメラ', price: 30000, isCamera: true },
+  { id: 'p_b05', name: 'BC-AB4002FA【AI/夜間カラー/バレット/400万画素/マイク/スピーカー/単焦点】', brand: 'BAIRY', type: 'カメラ', price: 45000, isCamera: true },
+  { id: 'p_b06', name: 'BC-AM4002FA【AI/夜間カラー/ドーム/400万画素/マイク/スピーカー/単焦点】', brand: 'BAIRY', type: 'カメラ', price: 45000, isCamera: true },
+  // ===== BAIRY レコーダー =====
+  { id: 'p_b07', name: 'BC-R43【4台/2TB】', brand: 'BAIRY', type: 'レコーダー', price: 59000, isCamera: false },
+  { id: 'p_b08', name: 'BC-R83【8台/4TB】', brand: 'BAIRY', type: 'レコーダー', price: 73000, isCamera: false },
+  { id: 'p_b09', name: 'BC-R163【16台/6TB】', brand: 'BAIRY', type: 'レコーダー', price: 110000, isCamera: false },
+  // ===== NSS カメラ =====
+  { id: 'p_n01', name: 'NSU-IP233-4M【400万画素/ドーム/固定/マイク無】', brand: 'NSS', type: 'カメラ', price: 22000, isCamera: true },
+  { id: 'p_n02', name: 'NSU-IP242-4M【400万画素/バレット/固定】', brand: 'NSS', type: 'カメラ', price: 22000, isCamera: true },
+  { id: 'p_n03', name: 'NSU-IP233C-4M【400万画素/ドーム/固定/夜間フルカラー】', brand: 'NSS', type: 'カメラ', price: 25000, isCamera: true },
+  { id: 'p_n04', name: 'NSU-IP242C-4M【400万画素/バレット/固定/夜間フルカラー】', brand: 'NSS', type: 'カメラ', price: 25000, isCamera: true },
+  { id: 'p_n05', name: 'NSU-IP233M-4M【400万画素/ドーム/電動バリフォーカル光学5倍ズーム】', brand: 'NSS', type: 'カメラ', price: 35000, isCamera: true },
+  { id: 'p_n06', name: 'NSU-IP242M-4M【400万画素/バレット/電動バリフォーカル光学5倍ズーム/マイク無】', brand: 'NSS', type: 'カメラ', price: 35000, isCamera: true },
+  { id: 'p_n07', name: 'NSU-IP235-2M【200万画素/ドーム/光学5倍PTZ】', brand: 'NSS', type: 'カメラ', price: 35000, isCamera: true },
+  { id: 'p_n08', name: 'NSU-IP236-5M【500万画素/ドーム/全方位(360°)】', brand: 'NSS', type: 'カメラ', price: 41000, isCamera: true },
+  { id: 'p_n09', name: 'NSC-IP933T-4M【400万画素/ドーム/固定/双方向通話】', brand: 'NSS', type: 'カメラ', price: 30000, isCamera: true },
+  { id: 'p_n10', name: 'NSC-IP942T-4M【400万画素/バレット/固定/双方向通話】', brand: 'NSS', type: 'カメラ', price: 30000, isCamera: true },
+  { id: 'p_n11', name: 'NSC-IP935T-4M【400万画素/ドーム/光学5倍PTZ/双方向通話/夜間フルカラー】', brand: 'NSS', type: 'カメラ', price: 68000, isCamera: true },
+  // ===== NSS レコーダー =====
+  { id: 'p_n12', name: 'NSU2004【4台/POE内蔵】', brand: 'NSS', type: 'レコーダー', price: 40000, isCamera: false },
+  { id: 'p_n13', name: 'NSU2008【8台/POE内蔵】', brand: 'NSS', type: 'レコーダー', price: 50000, isCamera: false },
+  { id: 'p_n14', name: 'NSU2016【16台/POE内蔵】', brand: 'NSS', type: 'レコーダー', price: 70000, isCamera: false },
+  { id: 'p_n15', name: 'NSU2032【32台/POE非内蔵】', brand: 'NSS', type: 'レコーダー', price: 160000, isCamera: false },
+  { id: 'p_n16', name: 'NSU2064【64台/POE非内蔵】', brand: 'NSS', type: 'レコーダー', price: 193000, isCamera: false },
+  // ===== その他 モニター =====
+  { id: 'p_m01', name: '21インチモニター', brand: 'その他', type: 'モニター', price: 20000, isCamera: false },
+  { id: 'p_m02', name: '24インチモニター', brand: 'その他', type: 'モニター', price: 19000, isCamera: false },
+  { id: 'p_m03', name: '27インチモニター', brand: 'その他', type: 'モニター', price: 20000, isCamera: false },
+];
+const DEFAULT_LEASE = [
+  { id: 'l1', name: 'リース会社A', rates: { 60: 1.85, 84: 1.40 } },
+  { id: 'l2', name: 'リース会社B', rates: { 60: 1.90, 84: 1.45 } },
+];
+
+// ===== フォルダツリー（何段でも入れ子）＋ 商材の folderId 所属 =====
+// フォルダ: { id, name, parentId }  parentId=null がルート直下
+// 商材: { ..., folderId }  folderId=null は未分類（ルート直下）
+
+function loadFolders() {
+  try {
+    const raw = localStorage.getItem(KEY_FOLDERS);
+    if (!raw) return null;
+    const d = JSON.parse(raw);
+    return Array.isArray(d) ? d : null;
+  } catch { return null; }
+}
+function saveFolders(arr) { localStorage.setItem(KEY_FOLDERS, JSON.stringify(arr)); }
+
+let _folderCache = null;
+function getFolders() {
+  if (_folderCache) return _folderCache;
+  normalizeData();
+  _folderCache = loadFolders() || [];
+  return _folderCache;
+}
+function commitFolders(arr) { _folderCache = arr; saveFolders(arr); }
+
+function genId(prefix) {
+  return prefix + Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
+}
+
+// ===== 自己修復：開くたびにデータ整合性をチェックして直す =====
+// ・フォルダに不正データ（文字列など）が混ざっていれば正規化
+// ・商材の folderId が実在フォルダを指していなければ、旧 brand/type から再分類
+// ・どちらも無ければホーム直下（未分類）へ
+let _normalized = false;
+function normalizeData() {
+  if (_normalized) return;
+  _normalized = true;
+
+  // --- フォルダの正規化 ---
+  let folders = loadFolders();
+  let foldersChanged = false;
+  if (!Array.isArray(folders)) { folders = []; foldersChanged = true; }
+  const fixed = [];
+  folders.forEach(f => {
+    if (f && typeof f === 'object' && f.id && f.name) {
+      fixed.push({ id: String(f.id), name: String(f.name), parentId: f.parentId || null });
+    } else if (typeof f === 'string' && f.trim()) {
+      // 旧版がフォルダ名の文字列配列で保存していた場合
+      fixed.push({ id: genId('f'), name: f.trim(), parentId: null });
+      foldersChanged = true;
+    } else {
+      foldersChanged = true; // 不正データは捨てる
+    }
+  });
+  folders = fixed;
+
+  const folderIdByPath = {};
+  folders.forEach(f => {
+    // ルートからのパスキーを構築
+    const path = [];
+    let cur = f;
+    const byId = {};
+    folders.forEach(x => byId[x.id] = x);
+    while (cur) { path.unshift(cur.name); cur = cur.parentId ? byId[cur.parentId] : null; }
+    folderIdByPath[path.join('/')] = f.id;
+  });
+  function ensureFolder(name, parentId, parentPath) {
+    const key = parentPath ? parentPath + '/' + name : name;
+    if (folderIdByPath[key]) return folderIdByPath[key];
+    const id = genId('f');
+    folders.push({ id, name, parentId: parentId || null });
+    folderIdByPath[key] = id;
+    foldersChanged = true;
+    return id;
+  }
+
+  // --- 商材の正規化 ---
+  let products;
+  try {
+    const raw = localStorage.getItem(KEY_PRODUCTS);
+    products = raw ? JSON.parse(raw) : null;
+  } catch { products = null; }
+  if (!Array.isArray(products)) {
+    products = DEFAULT_PRODUCTS.map(p => ({ ...p }));
+  }
+  let productsChanged = false;
+  const folderIds = new Set(folders.map(f => f.id));
+
+  products = products.map(p => {
+    const np = { ...p };
+    const hasValidFolder = np.folderId && folderIds.has(np.folderId);
+    if (!hasValidFolder) {
+      // 旧 brand/type（または category）から再分類
+      let brand = np.brand;
+      let type = np.type;
+      if (!brand && !type && np.category) {
+        type = np.category;
+        if (/BAIRY/i.test(np.name)) brand = 'BAIRY';
+        else if (/NSS/i.test(np.name)) brand = 'NSS';
+        else brand = 'その他';
+      }
+      if (brand || type) {
+        const b = brand || 'その他';
+        const bId = ensureFolder(b, null, '');
+        np.folderId = type ? ensureFolder(type, bId, b) : bId;
+      } else {
+        np.folderId = null; // ホーム直下
+      }
+      productsChanged = true;
+    }
+    if (np.brand !== undefined || np.type !== undefined || np.category !== undefined) {
+      delete np.brand; delete np.type; delete np.category;
+      productsChanged = true;
+    }
+    if (!np.id) { np.id = genId('p'); productsChanged = true; }
+    return np;
+  });
+
+  if (foldersChanged) saveFolders(folders);
+  if (productsChanged) localStorage.setItem(KEY_PRODUCTS, JSON.stringify(products));
+  _folderCache = null; // 再読込させる
+}
+
+function loadProducts() {
+  normalizeData();
+  try {
+    const raw = localStorage.getItem(KEY_PRODUCTS);
+    if (!raw) return DEFAULT_PRODUCTS.map(p => ({ ...p, folderId: null }));
+    const d = JSON.parse(raw);
+    if (!Array.isArray(d)) return [];
+    return d.map(p => ({ ...p, folderId: p.folderId === undefined ? null : p.folderId }));
+  } catch { return []; }
+}
+function saveProducts(arr) { localStorage.setItem(KEY_PRODUCTS, JSON.stringify(arr)); }
+
+// --- ツリー用ヘルパ ---
+function childFolders(parentId) {
+  return getFolders()
+    .filter(f => (f.parentId || null) === (parentId || null))
+    .sort((a, b) => a.name.localeCompare(b.name, 'ja'));
+}
+function productsInFolder(folderId) {
+  return loadProducts().filter(p => (p.folderId || null) === (folderId || null));
+}
+function folderById(id) { return getFolders().find(f => f.id === id) || null; }
+// 指定フォルダ配下（自身含む）の全フォルダIDを集める
+function descendantFolderIds(id) {
+  const out = [id];
+  childFolders(id).forEach(c => out.push(...descendantFolderIds(c.id)));
+  return out;
+}
+// パンくず用：ルート→現在地のフォルダ配列
+function folderPath(id) {
+  const path = [];
+  let cur = folderById(id);
+  while (cur) { path.unshift(cur); cur = cur.parentId ? folderById(cur.parentId) : null; }
+  return path;
+}
+// フォルダ配下（子孫含む）の商材件数
+function countInFolderDeep(id) {
+  const ids = descendantFolderIds(id);
+  return loadProducts().filter(p => ids.includes(p.folderId)).length;
+}
+
+// --- フォルダ操作 ---
+function addFolderInto(parentId, name) {
+  name = (name || '').trim();
+  if (!name) { showToast('フォルダ名を入力'); return null; }
+  const dup = childFolders(parentId).some(f => f.name === name);
+  if (dup) { showToast('同じ階層に同名フォルダがあります'); return null; }
+  const folders = getFolders().slice();
+  const id = genId('f');
+  folders.push({ id, name, parentId: parentId || null });
+  commitFolders(folders);
+  return id;
+}
+function renameFolderById(id) {
+  const f = folderById(id);
+  if (!f) return;
+  const newName = (prompt('新しいフォルダ名', f.name) || '').trim();
+  if (!newName || newName === f.name) return;
+  const dup = childFolders(f.parentId).some(x => x.id !== id && x.name === newName);
+  if (dup) { showToast('同じ階層に同名フォルダがあります'); return; }
+  const folders = getFolders().map(x => x.id === id ? { ...x, name: newName } : x);
+  commitFolders(folders);
+  renderProductMaster();
+  showToast('フォルダ名を変更しました');
+}
+function deleteFolderById(id) {
+  const f = folderById(id);
+  if (!f) return;
+  const ids = descendantFolderIds(id);
+  const affected = loadProducts().filter(p => ids.includes(p.folderId));
+  if (affected.length > 0) {
+    if (!confirm(`「${f.name}」とその中身（サブフォルダ含む商材${affected.length}件）をすべて削除しますか？\n（保存済み案件には影響しません）`)) return;
+    const remain = loadProducts().filter(p => !ids.includes(p.folderId));
+    saveProducts(remain);
+    const delIds = affected.map(p => p.id);
+    lineProducts = lineProducts.filter(l => !delIds.includes(l.productId));
+  } else {
+    if (!confirm(`空のフォルダ「${f.name}」を削除しますか？`)) return;
+  }
+  commitFolders(getFolders().filter(x => !ids.includes(x.id)));
+  if (ids.includes(currentFolderId)) currentFolderId = f.parentId || null;
+  renderProductMaster();
+  renderProductLines();
+  calculate();
+  showToast('フォルダを削除しました');
+}
+function addFolderFromInput() {
+  const el = $('new-folder-name');
+  const id = addFolderInto(currentFolderId, el.value);
+  if (id) {
+    el.value = '';
+    renderProductMaster();
+    showToast('フォルダを追加しました');
+  }
+}
+function loadLease() {
+  try {
+    const raw = localStorage.getItem(KEY_LEASE);
+    if (!raw) return DEFAULT_LEASE;
+    const d = JSON.parse(raw);
+    return Array.isArray(d) ? d : DEFAULT_LEASE;
+  } catch { return DEFAULT_LEASE; }
+}
+function saveLease(arr) { localStorage.setItem(KEY_LEASE, JSON.stringify(arr)); }
+function loadQuotes() {
+  try { return JSON.parse(localStorage.getItem(KEY_QUOTES) || '[]'); }
+  catch { return []; }
+}
+function saveQuotesList(arr) { localStorage.setItem(KEY_QUOTES, JSON.stringify(arr)); }
+
+// 工事費自動算出
+function calcCameraBaseFee(n) {
+  if (n <= 0) return 0;
+  if (n <= 2) return 100000;
+  if (n <= 4) return 150000;
+  if (n <= 6) return 200000;
+  if (n <= 8) return 250000;
+  if (n <= 10) return 280000;
+  if (n <= 32) {
+    const pairs = Math.ceil((n - 10) / 2);
+    return 280000 + pairs * 30000;
+  }
+  const extra = Math.ceil((n - 32) / 2);
+  return 610000 + extra * 30000;
+}
+
+function calcConstructionFee() {
+  const camCount = num('camera-count');
+  const secCount = num('security-count');
+  const recCount = num('recorder-count');
+  const cameraBase = calcCameraBaseFee(camCount);
+  let securityBase = 0;
+  if (secCount >= 1) securityBase = 50000 + Math.max(0, secCount - 1) * 20000;
+  const multiSite = Math.max(0, recCount - 1) * 30000;
+  const addItems = [
+    ['takasho', 35000, '高所作業車'], ['tplinks', 26000, 'TPリンク 小'],
+    ['tplinkl', 36000, 'TPリンク 大'], ['maisetsu', 10000, '埋設工事'],
+    ['keidenki', 20000, '軽電気工事'], ['doshuku', 20000, '土日祝日工事'],
+    ['service', 15000, 'サービス品設置'], ['saihomon', 30000, '再訪問'],
+    ['cancel', 30000, '当日キャンセル'],
+  ];
+  let additional = 0;
+  const breakdown = [];
+  if (cameraBase > 0) breakdown.push([`カメラ基本工事費(${camCount}台)`, cameraBase]);
+  if (securityBase > 0) breakdown.push([`セキュリティ基本(${secCount}件)`, securityBase]);
+  if (multiSite > 0) breakdown.push([`複数拠点(+${recCount-1}台)`, multiSite]);
+  addItems.forEach(([key, unit, label]) => {
+    if ($('ext-' + key).checked) {
+      const qty = num('ext-' + key + '-qty');
+      const sum = unit * qty;
+      additional += sum;
+      breakdown.push([label + (qty > 1 ? ` ×${qty}` : ''), sum]);
+    }
+  });
+  const other = num('ext-other');
+  if (other > 0) { additional += other; breakdown.push(['その他実費', other]); }
+  return { total: cameraBase + securityBase + multiSite + additional, breakdown };
+}
+
+function renderProductLines() {
+  const products = loadProducts();
+  const el = $('product-lines');
+  if (lineProducts.length === 0) {
+    el.innerHTML = '<div style="color:var(--text-sub);font-size:13px;padding:8px 0;">「商材を追加」から選択してください</div>';
+    return;
+  }
+  el.innerHTML = lineProducts.map((line, idx) => {
+    const p = products.find(x => x.id === line.productId);
+    if (!p) return `<div class="product-line"><div class="name">(削除済み商材)</div><div></div><div></div><button class="del" onclick="removeLine(${idx})">×</button></div>`;
+    const label = folderPath(p.folderId).map(f => f.name).join(' / ');
+    return `
+      <div class="product-line">
+        <div class="name">${escapeHtml(p.name)}<small>${escapeHtml(label)} ¥${fmt(p.price)}</small></div>
+        <input type="number" class="qty-input" value="${line.qty}" min="0" inputmode="numeric"
+          oninput="updateLineQty(${idx}, this.value)">
+        <div class="subtotal yen">${fmt(p.price * line.qty)}</div>
+        <button class="del" onclick="removeLine(${idx})">×</button>
+      </div>
+    `;
+  }).join('');
+}
+
+function updateLineQty(idx, val) {
+  lineProducts[idx].qty = Number(val) || 0;
+  calculate();
+}
+function removeLine(idx) {
+  lineProducts.splice(idx, 1);
+  renderProductLines();
+  calculate();
+}
+// フォルダブラウズの現在地（マスタ編集用・商材選択用）
+let currentFolderId = null;   // マスタ編集タブ
+let selectFolderId = null;    // 商材選択モーダル
+
+function openAddProduct(keepFolder) {
+  if (!keepFolder) selectFolderId = null;
+  renderSelectBrowser();
+  $('select-product-modal').classList.add('show');
+}
+
+// ツリーの展開状態
+const masterExpanded = new Set();
+const selectExpanded = new Set();
+
+// 選択したフォルダの祖先をすべて展開する
+function expandAncestors(id, set) {
+  let cur = id ? folderById(id) : null;
+  while (cur) { set.add(cur.id); cur = cur.parentId ? folderById(cur.parentId) : null; }
+}
+
+function selectGoTo(id) {
+  selectFolderId = id || null;
+  expandAncestors(selectFolderId, selectExpanded);
+  renderSelectBrowser();
+}
+function selectToggle(id) {
+  if (selectExpanded.has(id)) selectExpanded.delete(id);
+  else selectExpanded.add(id);
+  renderSelectBrowser();
+}
+
+// エクスプローラー左ペインのツリーHTML（再帰）
+function treeHTML(selectedId, expandedSet, navFn, toggleFn) {
+  let html = `
+    <div class="tr-row ${selectedId === null ? 'sel' : ''}">
+      <span class="tr-arrow"></span>
+      <span class="tr-label" onclick="${navFn}(null)">🏠 ホーム</span>
+    </div>`;
+  function walk(parentId, depth) {
+    childFolders(parentId).forEach(f => {
+      const kids = childFolders(f.id);
+      const open = expandedSet.has(f.id);
+      html += `
+        <div class="tr-row ${selectedId === f.id ? 'sel' : ''}" style="padding-left:${8 + depth * 14}px">
+          <span class="tr-arrow ${open ? 'open' : ''}" onclick="${toggleFn}('${f.id}')">${kids.length ? '▶' : ''}</span>
+          <span class="tr-label" onclick="${navFn}('${f.id}')">📁 ${escapeHtml(f.name)}</span>
+        </div>`;
+      if (open) walk(f.id, depth + 1);
+    });
+  }
+  walk(null, 0);
+  return html;
+}
+
+// パンくずHTML
+function crumbsHTML(folderId, navFn) {
+  const path = folderId ? folderPath(folderId) : [];
+  return `<div class="breadcrumb"><span class="crumb ${folderId ? '' : 'current'}" onclick="${navFn}(null)">ホーム</span>` +
+    path.map((f, i) => {
+      const islast = i === path.length - 1;
+      return `<span class="crumb-sep">›</span><span class="crumb ${islast ? 'current' : ''}" onclick="${navFn}('${f.id}')">${escapeHtml(f.name)}</span>`;
+    }).join('') + '</div>';
+}
+
+function renderSelectBrowser() {
+  try { renderSelectBrowserInner(); }
+  catch (e) {
+    $('select-product-list').innerHTML =
+      `<div class="empty">表示エラーが発生しました。<br><span style="font-size:11px;color:var(--text-sub);">${escapeHtml(e.message)}</span></div>`;
+  }
+}
+function renderSelectBrowserInner() {
+  const el = $('select-product-list');
+  const folders = childFolders(selectFolderId);
+  const items = productsInFolder(selectFolderId);
+
+  // 右ペイン（中身）
+  let content = '';
+  if (folders.length === 0 && items.length === 0) {
+    content = '<div class="empty">このフォルダは空です。</div>';
+  } else {
+    folders.forEach(f => {
+      const n = countInFolderDeep(f.id);
+      content += `
+        <div class="ex-row folder" onclick="selectGoTo('${f.id}')">
+          <span class="ex-icon">📁</span>
+          <span class="ex-name">${escapeHtml(f.name)}</span>
+          <span class="ex-meta">${n}件</span>
+          <span class="ex-chev">›</span>
+        </div>`;
+    });
+    items.forEach(p => {
+      content += `
+        <div class="ex-row file" onclick="addLineFromMaster('${p.id}')">
+          <span class="ex-icon">🎥</span>
+          <span class="ex-name">${escapeHtml(p.name)}<small>¥${fmt(p.price)}${p.isCamera ? ' ・ カメラ' : ''}</small></span>
+          <span class="ex-add">＋</span>
+        </div>`;
+    });
+  }
+
+  el.innerHTML =
+    crumbsHTML(selectFolderId, 'selectGoTo') +
+    `<div class="explorer-split">
+      <div class="tree-pane">${treeHTML(selectFolderId, selectExpanded, 'selectGoTo', 'selectToggle')}</div>
+      <div class="content-pane">${content}</div>
+    </div>`;
+}
+function addLineFromMaster(productId) {
+  const existing = lineProducts.find(l => l.productId === productId);
+  if (existing) existing.qty += 1;
+  else lineProducts.push({ productId, qty: 1 });
+  $('select-product-modal').classList.remove('show');
+  renderProductLines();
+  calculate();
+}
+
+let calcMode = 'monthly'; // 'monthly' = 月額起点 / 'profit' = 粗利起点
+
+function calculate() {
+  const products = loadProducts();
+  let productSubtotal = 0;
+  let cameraCount = 0;
+  lineProducts.forEach(line => {
+    const p = products.find(x => x.id === line.productId);
+    if (!p) return;
+    productSubtotal += p.price * line.qty;
+    if (p.isCamera) cameraCount += line.qty;
+  });
+  $('product-subtotal').textContent = fmt(productSubtotal);
+  $('camera-count').value = cameraCount;
+
+  let constructionTotal = 0;
+  let breakdown = [];
+  if ($('manual-construction').checked) {
+    constructionTotal = num('manual-construction-amount');
+    breakdown = [['手動入力', constructionTotal]];
+  } else {
+    const c = calcConstructionFee();
+    constructionTotal = c.total;
+    breakdown = c.breakdown;
+  }
+
+  const summaryEl = $('construction-summary');
+  if (breakdown.length === 0) {
+    summaryEl.innerHTML = '<div>工事費なし</div>';
+  } else {
+    summaryEl.innerHTML = breakdown.map(([k, v]) =>
+      `<div><span>${escapeHtml(k)}</span><span>¥${fmt(v)}</span></div>`
+    ).join('') + `<div class="total"><span>工事費合計</span><span>¥${fmt(constructionTotal)}</span></div>`;
+  }
+
+  const equipTotal = productSubtotal + constructionTotal;
+  const rate = num('lease-rate') / 100;
+  const term = num('lease-term-select');
+  // 原価合計 = 商材小計 + 工事費 + 諸経費
+  const totalCost = equipTotal + num('cost-total');
+
+  let monthly, salesTotal, profit;
+
+  if (calcMode === 'profit') {
+    // 粗利 → 販売総額 → 月額を逆算
+    profit = num('target-profit');
+    salesTotal = totalCost + profit;
+    monthly = salesTotal * rate;
+    // 月額の表示欄を更新（フォーカス中は上書きしない）
+    if (document.activeElement !== $('target-monthly')) {
+      setFmt('target-monthly', monthly);
+    }
+  } else {
+    // 月額 → 販売総額 → 粗利を逆算（従来）
+    monthly = num('target-monthly');
+    salesTotal = rate > 0 ? monthly / rate : 0;
+    profit = salesTotal - totalCost;
+    // 粗利の表示欄を更新（フォーカス中は上書きしない）
+    if (document.activeElement !== $('target-profit')) {
+      setFmt('target-profit', profit);
+    }
+  }
+
+  const totalPayment = monthly * term;
+  const profitRate = salesTotal > 0 ? (profit / salesTotal) * 100 : 0;
+
+  $('result-product').textContent = fmt(productSubtotal);
+  $('result-construction').textContent = fmt(constructionTotal);
+  $('result-sales').textContent = fmt(salesTotal);
+  $('total-payment').textContent = fmt(totalPayment);
+  $('profit-rate').textContent = profitRate.toFixed(1) + '%';
+
+  const profitBox = $('profit-box');
+  profitBox.classList.remove('profit','warning','danger');
+  if (profit < 0) profitBox.classList.add('danger');
+  else if (profit < 50000) profitBox.classList.add('warning');
+  else profitBox.classList.add('profit');
+}
+
+function toggleManualMode() {
+  $('manual-construction').checked = !$('manual-construction').checked;
+  const manual = $('manual-construction').checked;
+  $('auto-construction').style.display = manual ? 'none' : 'block';
+  $('manual-construction-input').style.display = manual ? 'block' : 'none';
+  calculate();
+}
+
+function populateLeaseSelect() {
+  const list = loadLease();
+  const sel = $('lease-company');
+  const prevValue = sel.value;
+  sel.innerHTML = list.map(l => `<option value="${l.id}">${escapeHtml(l.name)}</option>`).join('');
+  if (list.length === 0) { $('lease-term-select').innerHTML = ''; return; }
+  if (prevValue && list.find(l => l.id === prevValue)) sel.value = prevValue;
+  populateTermSelect(sel.value);
+}
+function populateTermSelect(companyId) {
+  const list = loadLease();
+  const company = list.find(c => c.id === companyId);
+  const sel = $('lease-term-select');
+  if (!company) { sel.innerHTML = ''; return; }
+  const prev = sel.value;
+  const terms = Object.keys(company.rates).filter(t => company.rates[t]).sort((a,b) => a-b);
+  sel.innerHTML = terms.map(t => `<option value="${t}">${t}回（${t/12}年）</option>`).join('');
+  // 基本は84回（7年）を初期選択。なければ前の選択→60回→先頭
+  if (terms.includes('84')) sel.value = '84';
+  else if (terms.includes(prev)) sel.value = prev;
+  else if (terms.includes('60')) sel.value = '60';
+  applyRate();
+}
+function applyRate() {
+  const company = loadLease().find(c => c.id === $('lease-company').value);
+  const term = $('lease-term-select').value;
+  if (company && company.rates[term]) $('lease-rate').value = company.rates[term];
+  calculate();
+}
+
+// ===== 長押しドラッグ並べ替え =====
+let dragState = null;
+let longPressTimer = null;
+
+// 商材の並び順を保存（グループ内のid順を全体配列に反映）
+function reorderProducts(brand, type, orderedIds) {
+  const products = loadProducts();
+  // 対象グループの商材を、新しい順序に並べたもの
+  const inGroup = orderedIds
+    .map(id => products.find(p => p.id === id))
+    .filter(Boolean);
+  // 対象グループの商材が元の配列で占めていた位置（インデックス）を集める
+  const groupIndices = [];
+  products.forEach((p, i) => {
+    if ((p.brand || 'その他') === brand && (p.type || 'その他') === type) {
+      groupIndices.push(i);
+    }
+  });
+  // それらの位置に、新しい順序の商材を順番に埋め直す
+  groupIndices.forEach((idx, k) => {
+    products[idx] = inGroup[k];
+  });
+  saveProducts(products);
+}
+
+function enableReorder() {
+  // ツリー(フォルダ)表示では並べ替えドラッグは無効。フォルダ移動は編集画面から。
+}
+
+function onTouchStart(e) {
+  const item = e.currentTarget;
+  const touch = e.touches[0];
+  startLongPress(item, touch.clientX, touch.clientY);
+}
+
+function onMouseDown(e) {
+  // 編集ボタン上では発火させない
+  if (e.target.closest('.icon-btn')) return;
+  const item = e.currentTarget;
+  startLongPress(item, e.clientX, e.clientY);
+  const moveHandler = (ev) => moveDrag(ev.clientX, ev.clientY);
+  const upHandler = () => {
+    finishDrag();
+    document.removeEventListener('mousemove', moveHandler);
+    document.removeEventListener('mouseup', upHandler);
+  };
+  document.addEventListener('mousemove', moveHandler);
+  document.addEventListener('mouseup', upHandler);
+}
+
+function startLongPress(item, x, y) {
+  // 編集ボタン上では発火させない（タッチ）
+  item.classList.add('drag-pressing');
+  longPressTimer = setTimeout(() => {
+    item.classList.remove('drag-pressing');
+    beginDrag(item, x, y);
+    // 振動フィードバック（対応端末のみ）
+    if (navigator.vibrate) navigator.vibrate(30);
+  }, 400); // 400ms長押しで起動
+}
+
+function cancelLongPress(item) {
+  clearTimeout(longPressTimer);
+  longPressTimer = null;
+  if (item) item.classList.remove('drag-pressing');
+}
+
+function beginDrag(item, x, y) {
+  const rect = item.getBoundingClientRect();
+  dragState = {
+    item,
+    brand: item.dataset.brand,
+    type: item.dataset.type,
+    startY: y,
+    offsetY: y - rect.top,
+    // 同じグループの兄弟要素
+    siblings: Array.from(item.parentElement.querySelectorAll(':scope > .master-item.draggable')),
+    placeholder: null,
+  };
+  item.classList.add('drag-active');
+  item.style.position = 'fixed';
+  item.style.left = rect.left + 'px';
+  item.style.top = rect.top + 'px';
+  item.style.width = rect.width + 'px';
+  item.style.pointerEvents = 'none';
+
+  // 元の場所にプレースホルダーを置く
+  const ph = document.createElement('div');
+  ph.style.height = rect.height + 'px';
+  dragState.placeholder = ph;
+  item.parentElement.insertBefore(ph, item.nextSibling);
+}
+
+function onTouchMove(e) {
+  if (!dragState) {
+    // ドラッグ前に動いたら長押しキャンセル
+    cancelLongPress(e.currentTarget);
+    return;
+  }
+  e.preventDefault();
+  const touch = e.touches[0];
+  moveDrag(touch.clientX, touch.clientY);
+}
+
+function moveDrag(x, y) {
+  if (!dragState) return;
+  const item = dragState.item;
+  item.style.top = (y - dragState.offsetY) + 'px';
+
+  // ドラッグ中の指の位置に最も近い兄弟を探して入れ替え位置を決定
+  const others = dragState.siblings.filter(s => s !== item);
+  let inserted = false;
+  for (const sib of others) {
+    const r = sib.getBoundingClientRect();
+    const mid = r.top + r.height / 2;
+    if (y < mid) {
+      sib.parentElement.insertBefore(dragState.placeholder, sib);
+      inserted = true;
+      break;
+    }
+  }
+  if (!inserted) {
+    // 一番下へ
+    const last = others[others.length - 1];
+    if (last) last.parentElement.insertBefore(dragState.placeholder, last.nextSibling);
+  }
+}
+
+function onTouchEnd(e) {
+  if (!dragState) {
+    cancelLongPress(e.currentTarget);
+    return;
+  }
+  finishDrag();
+}
+
+function finishDrag() {
+  if (!dragState) return;
+  const { item, placeholder, brand, type } = dragState;
+  // プレースホルダーの位置にitemを戻す
+  placeholder.parentElement.insertBefore(item, placeholder);
+  placeholder.remove();
+  // スタイルを元に戻す
+  item.classList.remove('drag-active');
+  item.style.position = '';
+  item.style.left = '';
+  item.style.top = '';
+  item.style.width = '';
+  item.style.pointerEvents = '';
+
+  // 新しい順序を取得して保存
+  const container = item.parentElement;
+  const orderedIds = Array.from(container.querySelectorAll(':scope > .master-item.draggable'))
+    .map(el => el.dataset.id);
+  reorderProducts(brand, type, orderedIds);
+
+  dragState = null;
+  // 再描画して整合性を保つ
+  renderProductMaster();
+  renderProductLines();
+  showToast('並べ替えました');
+}
+
+function masterGoTo(id) {
+  currentFolderId = id || null;
+  expandAncestors(currentFolderId, masterExpanded);
+  renderProductMaster();
+}
+function masterToggle(id) {
+  if (masterExpanded.has(id)) masterExpanded.delete(id);
+  else masterExpanded.add(id);
+  renderProductMaster();
+}
+
+function renderProductMaster() {
+  try { renderProductMasterInner(); }
+  catch (e) {
+    $('master-product-list').innerHTML =
+      `<div class="empty">表示エラーが発生しました。<br><span style="font-size:11px;color:var(--text-sub);">${escapeHtml(e.message)}</span></div>`;
+  }
+}
+function renderProductMasterInner() {
+  const el = $('master-product-list');
+  const folders = childFolders(currentFolderId);
+  const items = productsInFolder(currentFolderId);
+
+  // 右ペイン（中身）
+  let content = '';
+  if (folders.length === 0 && items.length === 0) {
+    content = '<div class="empty" style="padding:14px;">このフォルダは空です。<br>下でフォルダや商材を追加できます。</div>';
+  } else {
+    folders.forEach(f => {
+      const n = countInFolderDeep(f.id);
+      content += `
+        <div class="ex-row folder">
+          <span class="ex-open" onclick="masterGoTo('${f.id}')">
+            <span class="ex-icon">📁</span>
+            <span class="ex-name">${escapeHtml(f.name)}</span>
+            <span class="ex-meta">${n}件</span>
+          </span>
+          <span class="ex-actions">
+            <button class="icon-btn" onclick="renameFolderById('${f.id}')">名前</button>
+            <button class="icon-btn danger" onclick="deleteFolderById('${f.id}')">削除</button>
+          </span>
+        </div>`;
+    });
+    items.forEach(p => {
+      content += `
+        <div class="ex-row file">
+          <span class="ex-open" onclick="openEditProduct('${p.id}')">
+            <span class="ex-icon">🎥</span>
+            <span class="ex-name">${escapeHtml(p.name)}<small>¥${fmt(p.price)}${p.isCamera ? ' ・ カメラ' : ''}</small></span>
+          </span>
+          <span class="ex-actions">
+            <button class="icon-btn" onclick="openEditProduct('${p.id}')">編集</button>
+          </span>
+        </div>`;
+    });
+  }
+
+  el.innerHTML =
+    crumbsHTML(currentFolderId, 'masterGoTo') +
+    `<div class="explorer-split">
+      <div class="tree-pane">${treeHTML(currentFolderId, masterExpanded, 'masterGoTo', 'masterToggle')}</div>
+      <div class="content-pane">${content}</div>
+    </div>`;
+  // 「新しいフォルダ名」欄のプレースホルダに現在地を反映
+  const nf = $('new-folder-name');
+  if (nf) nf.placeholder = currentFolderId
+    ? `「${folderById(currentFolderId).name}」の中に新しいフォルダ`
+    : 'ホームに新しいフォルダ';
+}
+
+// 移行のため空実装（互換）
+function refreshBrandDatalist() {}
+
+function addProduct() {
+  const name = $('new-product-name').value.trim();
+  const price = Number($('new-product-price').value);
+  if (!name) { showToast('商材名を入力'); return; }
+  if (!price) { showToast('単価を入力'); return; }
+  const products = loadProducts();
+  products.push({
+    id: genId('p'),
+    name,
+    folderId: currentFolderId || null,
+    price, isCamera: $('new-product-iscamera').checked
+  });
+  saveProducts(products);
+  $('new-product-name').value = '';
+  $('new-product-price').value = '';
+  $('new-product-iscamera').checked = false;
+  renderProductMaster();
+  showToast('追加しました');
+}
+
+function openEditProduct(id) {
+  const p = loadProducts().find(x => x.id === id);
+  if (!p) return;
+  editingProductId = id;
+  $('edit-product-name').value = p.name;
+  $('edit-product-price').value = p.price;
+  $('edit-product-iscamera').checked = !!p.isCamera;
+  buildFolderSelect('edit-product-folder', p.folderId);
+  $('edit-product-modal').classList.add('show');
+}
+
+// フォルダ選択プルダウンを組み立て（インデントで階層表現）
+function buildFolderSelect(selectId, selectedId) {
+  const sel = $(selectId);
+  if (!sel) return;
+  let opts = '<option value="">（ホーム・未分類）</option>';
+  function walk(parentId, depth) {
+    childFolders(parentId).forEach(f => {
+      const pad = '　'.repeat(depth);
+      const on = f.id === selectedId ? ' selected' : '';
+      opts += `<option value="${f.id}"${on}>${pad}${escapeHtml(f.name)}</option>`;
+      walk(f.id, depth + 1);
+    });
+  }
+  walk(null, 0);
+  sel.innerHTML = opts;
+}
+
+function saveProductEdit() {
+  const products = loadProducts();
+  const p = products.find(x => x.id === editingProductId);
+  if (!p) return;
+  p.name = $('edit-product-name').value.trim() || p.name;
+  const fv = $('edit-product-folder').value;
+  p.folderId = fv || null;
+  delete p.brand; delete p.type; delete p.category;
+  p.price = Number($('edit-product-price').value) || p.price;
+  p.isCamera = $('edit-product-iscamera').checked;
+  saveProducts(products);
+  $('edit-product-modal').classList.remove('show');
+  renderProductMaster();
+  renderProductLines();
+  calculate();
+  showToast('保存しました');
+}
+function deleteProductFromMaster() {
+  if (!confirm('この商材を削除しますか？\n（保存済み案件には影響しません）')) return;
+  const products = loadProducts().filter(x => x.id !== editingProductId);
+  saveProducts(products);
+  lineProducts = lineProducts.filter(l => l.productId !== editingProductId);
+  $('edit-product-modal').classList.remove('show');
+  renderProductMaster();
+  renderProductLines();
+  calculate();
+  showToast('削除しました');
+}
+
+function renderLeaseMaster() {
+  const list = loadLease();
+  const el = $('master-lease-list');
+  if (list.length === 0) {
+    el.innerHTML = '<div class="empty">リース会社が未登録です</div>';
+    return;
+  }
+  el.innerHTML = list.map(l => {
+    const terms = Object.keys(l.rates).filter(t => l.rates[t]).sort((a,b)=>a-b)
+      .map(t => `${t}回 ${l.rates[t]}%`).join(' / ');
+    return `
+      <div class="master-item">
+        <div class="info">
+          <div class="name">${escapeHtml(l.name)}</div>
+          <div class="detail">${terms || '料率未設定'}</div>
+        </div>
+        <div class="actions"><button class="icon-btn" onclick="openEditLease('${l.id}')">編集</button></div>
+      </div>
+    `;
+  }).join('');
+}
+function addLeaseCompany() {
+  const name = $('new-lease-name').value.trim();
+  if (!name) { showToast('会社名を入力'); return; }
+  const rates = {};
+  [60,84].forEach(t => {
+    const v = Number($('new-rate-' + t).value);
+    if (v) rates[t] = v;
+  });
+  const list = loadLease();
+  list.push({ id: 'l' + Date.now(), name, rates });
+  saveLease(list);
+  $('new-lease-name').value = '';
+  [60,84].forEach(t => $('new-rate-' + t).value = '');
+  renderLeaseMaster();
+  populateLeaseSelect();
+  showToast('追加しました');
+}
+function openEditLease(id) {
+  const l = loadLease().find(x => x.id === id);
+  if (!l) return;
+  editingLeaseId = id;
+  $('edit-lease-name').value = l.name;
+  [60,84].forEach(t => $('edit-rate-' + t).value = l.rates[t] || '');
+  $('edit-lease-modal').classList.add('show');
+}
+function saveLeaseEdit() {
+  const list = loadLease();
+  const l = list.find(x => x.id === editingLeaseId);
+  if (!l) return;
+  l.name = $('edit-lease-name').value.trim() || l.name;
+  l.rates = {};
+  [60,84].forEach(t => {
+    const v = Number($('edit-rate-' + t).value);
+    if (v) l.rates[t] = v;
+  });
+  saveLease(list);
+  $('edit-lease-modal').classList.remove('show');
+  renderLeaseMaster();
+  populateLeaseSelect();
+  showToast('保存しました');
+}
+function deleteLeaseFromMaster() {
+  if (!confirm('このリース会社を削除しますか？')) return;
+  const list = loadLease().filter(x => x.id !== editingLeaseId);
+  saveLease(list);
+  $('edit-lease-modal').classList.remove('show');
+  renderLeaseMaster();
+  populateLeaseSelect();
+  showToast('削除しました');
+}
+
+document.querySelectorAll('.tab').forEach(t => {
+  t.addEventListener('click', () => {
+    document.querySelectorAll('.tab').forEach(x => x.classList.remove('active'));
+    t.classList.add('active');
+    const target = t.dataset.tab;
+    ['calc','saved','master'].forEach(name => {
+      $('tab-' + name).style.display = (name === target) ? 'block' : 'none';
+    });
+    if (target === 'saved') renderSaved();
+    if (target === 'master') { renderProductMaster(); renderLeaseMaster(); }
+  });
+});
+
+function switchToMaster(section) {
+  document.querySelectorAll('.tab').forEach(x => x.classList.remove('active'));
+  document.querySelector('.tab[data-tab="master"]').classList.add('active');
+  ['calc','saved','master'].forEach(name => {
+    $('tab-' + name).style.display = (name === 'master') ? 'block' : 'none';
+  });
+  renderProductMaster();
+  renderLeaseMaster();
+  document.querySelectorAll('.master-tab').forEach(x => {
+    x.classList.toggle('active', x.dataset.master === section);
+  });
+  $('master-products').style.display = section === 'products' ? 'block' : 'none';
+  $('master-lease').style.display = section === 'lease' ? 'block' : 'none';
+  window.scrollTo(0, 0);
+}
+
+document.querySelectorAll('.master-tab').forEach(t => {
+  t.addEventListener('click', () => {
+    document.querySelectorAll('.master-tab').forEach(x => x.classList.remove('active'));
+    t.classList.add('active');
+    const target = t.dataset.master;
+    $('master-products').style.display = target === 'products' ? 'block' : 'none';
+    $('master-lease').style.display = target === 'lease' ? 'block' : 'none';
+  });
+});
+
+// すべての入力に変更監視を一括設定
+function bindInputs() {
+  const ids = [
+    'security-count','recorder-count','cost-total',
+    'ext-other','manual-construction-amount','lease-rate'
+  ];
+  ids.forEach(id => $(id) && $(id).addEventListener('input', calculate));
+
+  // 月額欄・粗利欄：入力した方を起点に逆算
+  $('target-monthly').addEventListener('input', (e) => { reformatNumInput(e.target); calcMode = 'monthly'; calculate(); });
+  $('target-profit').addEventListener('input', (e) => { reformatNumInput(e.target); calcMode = 'profit'; calculate(); });
+
+  // チェックボックス＋数量
+  ['takasho','tplinks','tplinkl','maisetsu','keidenki','doshuku','service','saihomon','cancel']
+    .forEach(k => {
+      $('ext-' + k).addEventListener('change', calculate);
+      $('ext-' + k + '-qty').addEventListener('input', calculate);
+    });
+
+  $('lease-company').addEventListener('change', () => populateTermSelect($('lease-company').value));
+  $('lease-term-select').addEventListener('change', applyRate);
+}
+
+function resetForm() {
+  if (!confirm('入力内容をリセットしますか？')) return;
+  $('project-name').value = '';
+  lineProducts = [];
+  $('security-count').value = 0;
+  $('recorder-count').value = 1;
+  ['takasho','tplinks','tplinkl','maisetsu','keidenki','doshuku','service','saihomon','cancel']
+    .forEach(k => { $('ext-' + k).checked = false; $('ext-' + k + '-qty').value = 1; });
+  $('ext-other').value = 0;
+  $('manual-construction').checked = false;
+  $('manual-construction-amount').value = 0;
+  $('target-monthly').value = '15,000';
+  calcMode = 'monthly';
+  $('cost-total').value = 120000;
+  $('auto-construction').style.display = 'block';
+  $('manual-construction-input').style.display = 'none';
+  renderProductLines();
+  calculate();
+}
+
+function saveProject() {
+  const additional = {};
+  ['takasho','tplinks','tplinkl','maisetsu','keidenki','doshuku','service','saihomon','cancel']
+    .forEach(k => additional[k] = { checked: $('ext-' + k).checked, qty: num('ext-' + k + '-qty') });
+
+  const data = {
+    id: Date.now().toString(),
+    name: $('project-name').value || '（名称未設定）',
+    savedAt: new Date().toISOString(),
+    lines: [...lineProducts],
+    construction: {
+      manual: $('manual-construction').checked,
+      manualAmount: num('manual-construction-amount'),
+      securityCount: num('security-count'),
+      recorderCount: num('recorder-count'),
+      additional,
+      otherActual: num('ext-other'),
+    },
+    lease: {
+      companyId: $('lease-company').value,
+      term: num('lease-term-select'),
+      rate: num('lease-rate')
+    },
+    targetMonthly: num('target-monthly'),
+    costs: { total: num('cost-total') },
+    result: {
+      product: Number($('result-product').textContent.replace(/,/g,'')),
+      construction: Number($('result-construction').textContent.replace(/,/g,'')),
+      sales: Number($('result-sales').textContent.replace(/,/g,'')),
+      monthly: num('target-monthly'),
+      totalPayment: Number($('total-payment').textContent.replace(/,/g,'')),
+      profit: num('target-profit'),
+      profitRate: $('profit-rate').textContent,
+    }
+  };
+  const list = loadQuotes();
+  list.unshift(data);
+  saveQuotesList(list);
+  showToast('保存しました');
+  updateSavedCount();
+}
+
+function updateSavedCount() {
+  const c = loadQuotes().length;
+  $('saved-count').textContent = c > 0 ? `(${c})` : '';
+}
+
+function renderSaved() {
+  const list = loadQuotes();
+  const el = $('saved-list');
+  if (list.length === 0) {
+    el.innerHTML = '<div class="empty">保存された案件はまだありません</div>';
+    return;
+  }
+  el.innerHTML = list.map(item => {
+    const date = new Date(item.savedAt);
+    const dateStr = `${date.getMonth()+1}/${date.getDate()}`;
+    const profitColor = item.result.profit >= 50000 ? 'var(--accent)' :
+                        item.result.profit >= 0 ? 'var(--warn)' : 'var(--danger)';
+    return `
+      <div class="saved-item" onclick="showDetail('${item.id}')">
+        <div class="name">${escapeHtml(item.name)}</div>
+        <div class="meta">
+          <span>${dateStr}</span>
+          <span>月額 ¥${fmt(item.result.monthly)}</span>
+          <span style="color:${profitColor}">粗利 ¥${fmt(item.result.profit)} (${item.result.profitRate})</span>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+function showDetail(id) {
+  const item = loadQuotes().find(x => x.id === id);
+  if (!item) return;
+  currentDetailId = id;
+  $('modal-title').innerHTML = `<span>${escapeHtml(item.name)}</span><button class="close" onclick="$('detail-modal').classList.remove('show')">×</button>`;
+  const products = loadProducts();
+  const leaseList = loadLease();
+  const company = leaseList.find(l => l.id === item.lease.companyId);
+  const lineRows = (item.lines || []).map(line => {
+    const p = products.find(x => x.id === line.productId);
+    if (!p) return `<div>（削除済み商材）× ${line.qty}</div>`;
+    return `<div>${escapeHtml(p.name)} × ${line.qty} = ¥${fmt(p.price * line.qty)}</div>`;
+  }).join('');
+
+  $('modal-body').innerHTML = `
+    <div style="font-size:13px; line-height:1.8;">
+      <div style="color:var(--text-sub);margin-top:6px;">商材</div>
+      ${lineRows || '<div>なし</div>'}
+      <div style="color:var(--text-sub);margin-top:10px;">工事費</div>
+      <div>¥${fmt(item.result.construction)}（${item.construction.manual ? '手動' : '自動算出'}）</div>
+      <div style="color:var(--text-sub);margin-top:10px;">リース</div>
+      <div>${company ? escapeHtml(company.name) : '(不明)'} ・ ${item.lease.term}回 ・ ${item.lease.rate}%</div>
+      <div style="color:var(--text-sub);margin-top:10px;">結果</div>
+      <div>販売額: ¥${fmt(item.result.sales)}</div>
+      <div>月額: <strong>¥${fmt(item.result.monthly)}</strong></div>
+      <div>粗利: <strong style="color:var(--accent);">¥${fmt(item.result.profit)} (${item.result.profitRate})</strong></div>
+    </div>
+  `;
+  $('detail-modal').classList.add('show');
+}
+
+function closeModalBg(e, id) {
+  if (e.target.id === id) $(id).classList.remove('show');
+}
+
+function deleteCurrent() {
+  if (!confirm('この案件を削除しますか？')) return;
+  const list = loadQuotes().filter(x => x.id !== currentDetailId);
+  saveQuotesList(list);
+  $('detail-modal').classList.remove('show');
+  renderSaved();
+  updateSavedCount();
+  showToast('削除しました');
+}
+
+function loadCurrent() {
+  const item = loadQuotes().find(x => x.id === currentDetailId);
+  if (!item) return;
+  $('project-name').value = item.name;
+  lineProducts = [...(item.lines || [])];
+  $('security-count').value = item.construction.securityCount || 0;
+  $('recorder-count').value = item.construction.recorderCount || 1;
+  $('manual-construction').checked = !!item.construction.manual;
+  $('manual-construction-amount').value = item.construction.manualAmount || 0;
+  const add = item.construction.additional || {};
+  ['takasho','tplinks','tplinkl','maisetsu','keidenki','doshuku','service','saihomon','cancel']
+    .forEach(k => {
+      $('ext-' + k).checked = !!(add[k] && add[k].checked);
+      $('ext-' + k + '-qty').value = (add[k] && add[k].qty) || 1;
+    });
+  $('ext-other').value = item.construction.otherActual || 0;
+  if (item.lease.companyId) {
+    const leaseList = loadLease();
+    if (leaseList.find(l => l.id === item.lease.companyId)) {
+      $('lease-company').value = item.lease.companyId;
+      populateTermSelect(item.lease.companyId);
+      $('lease-term-select').value = item.lease.term;
+    }
+  }
+  $('lease-rate').value = item.lease.rate;
+  setFmt('target-monthly', item.targetMonthly || 15000);
+  calcMode = 'monthly';
+  // 旧形式（goods + travel）と新形式（total）の両対応
+  if (item.costs.total !== undefined) {
+    $('cost-total').value = item.costs.total;
+  } else {
+    $('cost-total').value = (item.costs.goods || 0) + (item.costs.travel || 0);
+  }
+
+  document.querySelectorAll('.tab').forEach(x => x.classList.toggle('active', x.dataset.tab === 'calc'));
+  $('tab-calc').style.display = 'block';
+  $('tab-saved').style.display = 'none';
+  $('tab-master').style.display = 'none';
+  $('detail-modal').classList.remove('show');
+
+  const manual = $('manual-construction').checked;
+  $('auto-construction').style.display = manual ? 'none' : 'block';
+  $('manual-construction-input').style.display = manual ? 'block' : 'none';
+  renderProductLines();
+  calculate();
+  window.scrollTo(0, 0);
+  showToast('読み込みました');
+}
+
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+function escapeAttr(s) {
+  return String(s).replace(/['"\\]/g, '\\$&');
+}
+
+function showToast(msg) {
+  const t = $('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 1500);
+}
+
+// ===== マスタのデータ引き継ぎ =====
+function exportMasters() {
+  const payload = {
+    type: 'rezon-master',
+    version: 2,
+    exportedAt: new Date().toISOString(),
+    products: loadProducts(),
+    folders: getFolders(),
+    lease: loadLease(),
+  };
+  // JSONをBase64化して1行のコードにする（改行混入の事故を防ぐ）
+  const json = JSON.stringify(payload);
+  const code = 'REZON1:' + btoa(unescape(encodeURIComponent(json)));
+  $('export-text').value = code;
+  $('export-modal').classList.add('show');
+}
+
+function copyExport() {
+  const ta = $('export-text');
+  ta.select();
+  ta.setSelectionRange(0, ta.value.length);
+  navigator.clipboard.writeText(ta.value)
+    .then(() => showToast('コピーしました'))
+    .catch(() => {
+      try { document.execCommand('copy'); showToast('コピーしました'); }
+      catch { showToast('コピーできませんでした'); }
+    });
+}
+
+function shareExport() {
+  const text = $('export-text').value;
+  if (navigator.share) {
+    navigator.share({ title: '粗利計算 マスタデータ', text }).catch(() => {});
+  } else {
+    copyExport();
+    showToast('共有未対応のためコピーしました');
+  }
+}
+
+function openImport() {
+  $('import-text').value = '';
+  $('import-replace').checked = false;
+  $('import-modal').classList.add('show');
+}
+
+function doImport() {
+  const raw = $('import-text').value.trim();
+  if (!raw) { showToast('コードを貼り付けてください'); return; }
+  let payload;
+  try {
+    let jsonStr;
+    if (raw.startsWith('REZON1:')) {
+      jsonStr = decodeURIComponent(escape(atob(raw.slice(7))));
+    } else {
+      // 生JSONの貼り付けも一応許容
+      jsonStr = raw;
+    }
+    payload = JSON.parse(jsonStr);
+  } catch {
+    showToast('コードが正しくありません');
+    return;
+  }
+  if (!payload || payload.type !== 'rezon-master' || !Array.isArray(payload.products) || !Array.isArray(payload.lease)) {
+    showToast('マスタデータではありません');
+    return;
+  }
+
+  const replace = $('import-replace').checked;
+  const impFolders = Array.isArray(payload.folders) ? payload.folders : [];
+  if (replace) {
+    if (!confirm('現在のマスタを、取り込むデータで完全に置き換えます。よろしいですか？')) return;
+    commitFolders(impFolders);
+    saveProducts(payload.products);
+    saveLease(payload.lease);
+  } else {
+    // --- フォルダをパス単位でマージ（既存に無いパスだけ作る） ---
+    const impById = {};
+    impFolders.forEach(f => impById[f.id] = f);
+    function impPath(fid) {
+      const arr = []; let cur = fid ? impById[fid] : null;
+      while (cur) { arr.unshift(cur.name); cur = cur.parentId ? impById[cur.parentId] : null; }
+      return arr;
+    }
+    function curPathIndex() {
+      const idx = {};
+      function walk(parentId, prefix) {
+        childFolders(parentId).forEach(f => {
+          const path = prefix.concat(f.name);
+          idx[path.join('/')] = f.id;
+          walk(f.id, path);
+        });
+      }
+      walk(null, []);
+      return idx;
+    }
+    const idMap = {};
+    const sortedByDepth = impFolders.slice().sort((a,b) => impPath(a.id).length - impPath(b.id).length);
+    sortedByDepth.forEach(f => {
+      const path = impPath(f.id);
+      const key = path.join('/');
+      const idxNow = curPathIndex();
+      if (idxNow[key]) { idMap[f.id] = idxNow[key]; return; }
+      const parentPath = path.slice(0, -1).join('/');
+      const parentId = parentPath ? (idxNow[parentPath] || null) : null;
+      idMap[f.id] = addFolderInto(parentId, f.name);
+    });
+
+    // --- 商材マージ（重複はパス＋名前で判定） ---
+    const curProducts = loadProducts();
+    const curIndex = curPathIndex();
+    const curPathById = {};
+    Object.keys(curIndex).forEach(k => curPathById[curIndex[k]] = k);
+    const existingKeys = new Set(curProducts.map(p => `${p.name}|${curPathById[p.folderId] || ''}`));
+    let addedP = 0;
+    payload.products.forEach(p => {
+      const k = `${p.name}|${impPath(p.folderId).join('/')}`;
+      if (!existingKeys.has(k)) {
+        const newFid = p.folderId ? (idMap[p.folderId] || null) : null;
+        curProducts.push({ ...p, id: genId('p'), folderId: newFid });
+        existingKeys.add(k);
+        addedP++;
+      }
+    });
+    saveProducts(curProducts);
+
+    const curLease = loadLease();
+    const existingLeaseNames = new Set(curLease.map(l => l.name));
+    let addedL = 0;
+    payload.lease.forEach(l => {
+      if (!existingLeaseNames.has(l.name)) {
+        curLease.push({ ...l, id: 'l' + Date.now() + Math.random().toString(36).slice(2,6) });
+        addedL++;
+      }
+    });
+    saveLease(curLease);
+    showToast(`商材${addedP}件・リース${addedL}件を追加`);
+  }
+
+  $('import-modal').classList.remove('show');
+  renderProductMaster();
+  renderLeaseMaster();
+  populateLeaseSelect();
+  renderProductLines();
+  calculate();
+  if (replace) showToast('マスタを置き換えました');
+}
+
+// 初期化
+populateLeaseSelect();
+renderProductLines();
+bindInputs();
+calculate();
+updateSavedCount();
+
+</script>
+</body>
+</html>
